@@ -1,0 +1,12 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UnrealEditor-IntroCpp.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"C:/UnrealProjects/UE_Practice/IntroCpp/Intermediate/Build/Win64/x64/IntroCppEditor/Development/UnrealEd/SharedPCH.UnrealEd.Project.ValApi.ValExpApi.Cpp20.h.obj"
+"C:/UnrealProjects/UE_Practice/IntroCpp/Intermediate/Build/Win64/x64/UnrealEditor/Development/IntroCpp/Module.IntroCpp.cpp.obj"
+"C:/UnrealProjects/UE_Practice/IntroCpp/Intermediate/Build/Win64/x64/UnrealEditor/Development/IntroCpp/Default.rc2.res"
+/OUT:"C:/UnrealProjects/UE_Practice/IntroCpp/Intermediate/Build/Win64/x64/UnrealEditor/Development/IntroCpp/UnrealEditor-IntroCpp.lib"
