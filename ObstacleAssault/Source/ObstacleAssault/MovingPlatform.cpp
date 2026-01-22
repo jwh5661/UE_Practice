@@ -15,10 +15,8 @@ AMovingPlatform::AMovingPlatform()
 void AMovingPlatform::BeginPlay()
 {
 	Super::BeginPlay();
+
 	
-	int MyValue;
-	MyValue = -10 * -5;
-	UE_LOG(LogTemp, Display, TEXT("MyValue is %d"), MyValue);
 }
 
 // Called every frame
@@ -26,4 +24,11 @@ void AMovingPlatform::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	// X좌표 Tick마다 1씩 증가
+	// MyVector.X = MyVector.X + 1;
+	FVector CurrentLocation = GetActorLocation();
+
+	CurrentLocation += PlatformVelocity * DeltaTime;
+
+	SetActorLocation(CurrentLocation);
 }
