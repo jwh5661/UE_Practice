@@ -11,9 +11,12 @@ AMovingPlatform::AMovingPlatform()
 
 }
 
-void MyTestFunction()
+int MyTestFunction(float MyFloatParam, int MyIntParam)
 {
-	UE_LOG(LogTemp, Display, TEXT("test function called"));
+	UE_LOG(LogTemp, Display, TEXT("MyFloatParam is %f"), MyFloatParam);
+	UE_LOG(LogTemp, Display, TEXT("MyIntParam is %d"), MyIntParam);
+
+	return 40;
 }
 
 // Called when the game starts or when spawned
@@ -21,7 +24,10 @@ void AMovingPlatform::BeginPlay()
 {
 	Super::BeginPlay();
 
-	MyTestFunction();
+	int ReturnValue = MyTestFunction(3.5f, 2);
+	UE_LOG(LogTemp, Display, TEXT("Return value is %d"), ReturnValue);
+
+	StartLocation = GetActorLocation();
 }
 
 // Called every frame
@@ -29,9 +35,48 @@ void AMovingPlatform::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	FVector CurrentLocation = GetActorLocation();
+	MovePlatform(DeltaTime);
+	RotatePlatform(DeltaTime);
+}
 
-	CurrentLocation += PlatformVelocity * DeltaTime;
+void AMovingPlatform::MovePlatform(float DeltaTime)
+{
+	DistanceMoved = GetDistanceMoved();
 
-	SetActorLocation(CurrentLocation);
+	if (DistanceMoved >= MoveDistance)
+	{
+		float Overshoot = DistanceMoved - MoveDistance;
+		FString PlatformName = GetName();
+		UE_LOG(LogTemp, Display, TEXT("%s overshot : %f"), *PlatformName, Overshoot);
+		
+		FVector MoveDirection = PlatformVelocity.GetSafeNormal();
+		FVector NewStartLocation = StartLocation + MoveDirection * MoveDistance;
+		SetActorLocation(NewStartLocation);
+		StartLocation = NewStartLocation;
+		
+		PlatformVelocity = -PlatformVelocity;	
+	}
+	else
+	{
+		FVector CurrentLocation = GetActorLocation();
+
+		CurrentLocation += PlatformVelocity * DeltaTime;
+
+		SetActorLocation(CurrentLocation);
+	}
+}
+
+void AMovingPlatform::RotatePlatform(float DeltaTime)
+{
+	// Rotate the platform
+	FRotator CurrentRotation = GetActorRotation();
+
+	CurrentRotation += RotateVelocity * DeltaTime;
+
+	SetActorRotation(CurrentRotation);
+}
+
+float AMovingPlatform::GetDistanceMoved()
+{
+	return FVector::Dist(StartLocation, GetActorLocation());
 }

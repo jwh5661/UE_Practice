@@ -403,8 +403,7 @@
             "c:\\unrealprojects\\ue_practice\\obstacleassault\\source\\obstacleassault\\variant_combat\\ui\\combatlifebar.cpp",
             "c:\\unrealprojects\\ue_practice\\obstacleassault\\source\\obstacleassault\\variant_platforming\\animation\\animnotify_enddash.cpp",
             "c:\\unrealprojects\\ue_practice\\obstacleassault\\source\\obstacleassault\\variant_platforming\\animation\\animnotify_enddash.h",
-            "c:\\unrealprojects\\ue_practice\\obstacleassault\\intermediate\\build\\win64\\unrealeditor\\inc\\obstacleassault\\uht\\animnotify_enddash.generated.h",
-            "c:\\unrealprojects\\ue_practice\\obstacleassault\\source\\obstacleassault\\variant_platforming\\platformingcharacter.cpp"
+            "c:\\unrealprojects\\ue_practice\\obstacleassault\\intermediate\\build\\win64\\unrealeditor\\inc\\obstacleassault\\uht\\animnotify_enddash.generated.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

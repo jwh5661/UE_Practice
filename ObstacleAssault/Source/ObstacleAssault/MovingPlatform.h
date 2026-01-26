@@ -15,6 +15,10 @@ public:
 	// Sets default values for this actor's properties
 	AMovingPlatform();
 
+	void MovePlatform(float DeltaTime);
+	void RotatePlatform(float DeltaTime);
+	float GetDistanceMoved();
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -31,4 +35,15 @@ public:
 
 	UPROPERTY(EditAnywhere)
 	FVector PlatformVelocity = FVector(0.0f, 0.0f, 0.0f);
+
+	UPROPERTY(EditAnywhere)
+	FRotator RotateVelocity = FRotator(0.0f, 0.0f, 0.0f);
+
+	UPROPERTY(EditAnywhere)
+	float MoveDistance = 100.0f;
+
+	UPROPERTY(VisibleAnywhere)
+	float DistanceMoved = 0.0f;
+
+	FVector StartLocation;
 };
