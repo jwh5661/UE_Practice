@@ -37,7 +37,7 @@ public:
 	FVector PlatformVelocity = FVector(0.0f, 0.0f, 0.0f);
 
 	UPROPERTY(EditAnywhere)
-	FRotator RotateVelocity = FRotator(0.0f, 0.0f, 0.0f);
+	FRotator RotationVelocity = FRotator(0.0f, 0.0f, 0.0f);
 
 	UPROPERTY(EditAnywhere)
 	float MoveDistance = 100.0f;

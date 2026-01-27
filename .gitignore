@@ -72,3 +72,24 @@ Plugins/**/Intermediate/*
 
 # Cache files for the editor to use
 DerivedDataCache/*
+
+
+# Unreal saved outputs (safer)
+Saved/
+Saved/**
+
+# Packaging outputs
+*.ucas
+*.utoc
+*.pak
+
+# Shader caches
+*.ushaderbytecode
+
+*.pdb
+
+ObstacleAssault/Content/Survival_Character/*
+
+ObstacleAssault/Content/Asian_Village/*
+
+ObstacleAssault/Content/Construction_VOL1/*
