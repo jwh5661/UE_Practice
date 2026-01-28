@@ -1,0 +1,17 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "c:\\unrealprojects\\ue_practice\\dungeonescape\\intermediate\\build\\win64\\unrealeditor\\inc\\dungeonescape\\uht\\shooterweapon.gen.cpp",
+        "ProvidedModule": "",
+        "PCH": "c:\\unrealprojects\\ue_practice\\dungeonescape\\intermediate\\build\\win64\\x64\\dungeonescapeeditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.valexpapi.cpp20.h.pch",
+        "Includes": [
+            "c:\\unrealprojects\\ue_practice\\dungeonescape\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\dungeonescape\\definitions.dungeonescape.h",
+            "c:\\unrealprojects\\ue_practice\\dungeonescape\\source\\dungeonescape\\variant_shooter\\weapons\\shooterweapon.h",
+            "c:\\unrealprojects\\ue_practice\\dungeonescape\\source\\dungeonescape\\variant_shooter\\weapons\\shooterweaponholder.h",
+            "c:\\unrealprojects\\ue_practice\\dungeonescape\\intermediate\\build\\win64\\unrealeditor\\inc\\dungeonescape\\uht\\shooterweaponholder.generated.h",
+            "c:\\unrealprojects\\ue_practice\\dungeonescape\\intermediate\\build\\win64\\unrealeditor\\inc\\dungeonescape\\uht\\shooterweapon.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

@@ -1,0 +1,8 @@
+{
+	"SourceFiles": [
+		"C:\\UnrealProjects\\UE_Practice\\DungeonEscape\\Source\\DungeonEscape\\DungeonEscape.Build.cs",
+		"C:\\UnrealProjects\\UE_Practice\\DungeonEscape\\Source\\DungeonEscape.Target.cs",
+		"C:\\UnrealProjects\\UE_Practice\\DungeonEscape\\Source\\DungeonEscapeEditor.Target.cs"
+	],
+	"EngineVersion": "5.6.1"
+}
