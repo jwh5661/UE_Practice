@@ -20,6 +20,7 @@
 #include "C:/UnrealProjects/UE_Practice/DungeonEscape/Intermediate/Build/Win64/UnrealEditor/Inc/DungeonEscape/UHT/ShooterUI.gen.cpp"
 #include "C:/UnrealProjects/UE_Practice/DungeonEscape/Intermediate/Build/Win64/UnrealEditor/Inc/DungeonEscape/UHT/ShooterWeapon.gen.cpp"
 #include "C:/UnrealProjects/UE_Practice/DungeonEscape/Intermediate/Build/Win64/UnrealEditor/Inc/DungeonEscape/UHT/ShooterWeaponHolder.gen.cpp"
+#include "C:/UnrealProjects/UE_Practice/DungeonEscape/Intermediate/Build/Win64/x64/UnrealEditor/Development/DungeonEscape/PerModuleInline.gen.cpp"
 #include "C:/UnrealProjects/UE_Practice/DungeonEscape/Source/DungeonEscape/DungeonEscape.cpp"
 #include "C:/UnrealProjects/UE_Practice/DungeonEscape/Source/DungeonEscape/DungeonEscapeCameraManager.cpp"
 #include "C:/UnrealProjects/UE_Practice/DungeonEscape/Source/DungeonEscape/DungeonEscapeCharacter.cpp"

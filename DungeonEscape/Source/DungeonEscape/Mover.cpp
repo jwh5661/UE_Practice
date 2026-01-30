@@ -3,6 +3,8 @@
 
 #include "Mover.h"
 
+#include "Math/UnrealMathUtility.h"
+
 // Sets default values for this component's properties
 UMover::UMover()
 {
@@ -45,7 +47,9 @@ void UMover::BeginPlay()
 	AActor* MyOwner = GetOwner();
 
 	StartLocation = MyOwner->GetActorLocation();
-	UE_LOG(LogTemp, Display, TEXT("Start location is %s"), *StartLocation.ToCompactString());
+	// UE_LOG(LogTemp, Display, TEXT("Start location is %s"), *StartLocation.ToCompactString());
+
+	
 }
 
 
@@ -54,10 +58,27 @@ void UMover::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponent
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
+	if (Shouldmove)
+	{
+		TargetLocation = StartLocation + MoveOffset;
+	}
+	else
+	{
+		TargetLocation = StartLocation;
+	}
+
 	FVector CurrentLocation = GetOwner()->GetActorLocation();
 
-	CurrentLocation.Z += 100.0f * DeltaTime;
+	ReachedTarget = CurrentLocation.Equals(TargetLocation);
 
-	GetOwner()->SetActorLocation(CurrentLocation);
+	if (!ReachedTarget)
+	{
+		float Speed = MoveOffset.Length() / MoveTime;
+		FVector NewLocation
+			= FMath::VInterpConstantTo(CurrentLocation, TargetLocation, DeltaTime, Speed);
+
+		GetOwner()->SetActorLocation(NewLocation);
+
+		// UE_LOG(LogTemp, Display, TEXT("Mover is moving!"));
+	}
 }
-

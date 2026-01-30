@@ -23,6 +23,7 @@
 			"ShooterUI.gen.cpp.obj",
 			"ShooterWeapon.gen.cpp.obj",
 			"ShooterWeaponHolder.gen.cpp.obj",
+			"PerModuleInline.gen.cpp.obj",
 			"DungeonEscape.cpp.obj",
 			"DungeonEscapeCameraManager.cpp.obj",
 			"DungeonEscapeCharacter.cpp.obj",
@@ -47,7 +48,6 @@
 			"ShooterWeaponHolder.cpp.obj",
 			"DungeonEscape.init.gen.cpp.obj",
 			"Mover.gen.cpp.obj",
-			"PerModuleInline.gen.cpp.obj",
 			"Mover.cpp.obj"
 		]
 	}
