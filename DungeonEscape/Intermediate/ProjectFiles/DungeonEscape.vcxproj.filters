@@ -72,6 +72,12 @@
     <ClInclude Include="..\..\Source\DungeonEscape\Mover.h">
       <Filter>Source\DungeonEscape</Filter>
     </ClInclude>
+    <ClCompile Include="..\..\Source\DungeonEscape\TriggerComponent.cpp">
+      <Filter>Source\DungeonEscape</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\DungeonEscape\TriggerComponent.h">
+      <Filter>Source\DungeonEscape</Filter>
+    </ClInclude>
     <Filter Include="Source\DungeonEscape\Variant_Horror">
       <UniqueIdentifier>{84694BDF-569C-335F-9563-2A1725C4BAF5}</UniqueIdentifier>
     </Filter>

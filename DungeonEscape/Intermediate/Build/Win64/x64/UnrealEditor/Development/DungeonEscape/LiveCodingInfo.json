@@ -11,6 +11,7 @@
 			"HorrorGameMode.gen.cpp.obj",
 			"HorrorPlayerController.gen.cpp.obj",
 			"HorrorUI.gen.cpp.obj",
+			"Mover.gen.cpp.obj",
 			"ShooterAIController.gen.cpp.obj",
 			"ShooterBulletCounterUI.gen.cpp.obj",
 			"ShooterCharacter.gen.cpp.obj",
@@ -29,6 +30,7 @@
 			"DungeonEscapeCharacter.cpp.obj",
 			"DungeonEscapeGameMode.cpp.obj",
 			"DungeonEscapePlayerController.cpp.obj",
+			"Mover.cpp.obj",
 			"HorrorCharacter.cpp.obj",
 			"HorrorGameMode.cpp.obj",
 			"HorrorPlayerController.cpp.obj",
@@ -47,8 +49,8 @@
 			"ShooterWeapon.cpp.obj",
 			"ShooterWeaponHolder.cpp.obj",
 			"DungeonEscape.init.gen.cpp.obj",
-			"Mover.gen.cpp.obj",
-			"Mover.cpp.obj"
+			"TriggerComponent.gen.cpp.obj",
+			"TriggerComponent.cpp.obj"
 		]
 	}
 }
