@@ -41,6 +41,16 @@ void UTriggerComponent::BeginPlay()
 	}
 }
 
+void UTriggerComponent::Trigger(bool NewTriggerValue)
+{
+	IsTriggered = NewTriggerValue;
+		
+	if (Mover)
+		Mover->SetShouldMove(IsTriggered);
+	else
+		UE_LOG(LogTemp, Display, TEXT("%s dosen't have a mover to trigger!"), *GetOwner()->GetActorNameOrLabel());
+}
+
 void UTriggerComponent::TickComponent
 (float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
@@ -52,10 +62,8 @@ void UTriggerComponent::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AAct
 {
 	if (OtherActor && OtherActor->ActorHasTag("PressurePlateActivator"))
 	{
-		if (Mover)
-		{
-			Mover->Shouldmove = true;
-		}
+		if(!IsTriggered)
+			Trigger(true);
 	}
 }
 
@@ -63,9 +71,7 @@ void UTriggerComponent::OnOverlapEnd(UPrimitiveComponent* OverlappedComp, AActor
 {
 	if (OtherActor && OtherActor->ActorHasTag("PressurePlateActivator"))
 	{
-		if (Mover)
-		{
-			Mover->Shouldmove = false;
-		}
+		if(IsTriggered)
+			Trigger(false);
 	}
 }

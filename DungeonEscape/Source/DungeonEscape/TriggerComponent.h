@@ -23,6 +23,7 @@ public:
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
+	void Trigger(bool NewTriggerValue);
 
 public:
 	// Called every frame
@@ -42,4 +43,7 @@ public:
 
 	UPROPERTY(EditAnywhere)
 	bool IsPressurePlate = false;
+
+	UPROPERTY(VisibleAnywhere)
+	bool IsTriggered = false;
 };
