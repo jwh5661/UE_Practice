@@ -23,7 +23,6 @@ public:
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
-	void Trigger(bool NewTriggerValue);
 
 public:
 	// Called every frame
@@ -36,6 +35,8 @@ public:
 	UFUNCTION()
 	void OnOverlapEnd(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
 
+	void Trigger(bool NewTriggerValue);
+
 	UPROPERTY(EditAnywhere)
 	AActor* MoverActor;
 
@@ -46,4 +47,7 @@ public:
 
 	UPROPERTY(VisibleAnywhere)
 	bool IsTriggered = false;
+
+	UPROPERTY(VisibleAnywhere)
+	int32 ActivatorCount = 0;
 };

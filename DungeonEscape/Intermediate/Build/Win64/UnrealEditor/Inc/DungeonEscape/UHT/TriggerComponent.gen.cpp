@@ -236,12 +236,17 @@ struct Z_Construct_UClass_UTriggerComponent_Statics
 		{ "Category", "TriggerComponent" },
 		{ "ModuleRelativePath", "TriggerComponent.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_ActivatorCount_MetaData[] = {
+		{ "Category", "TriggerComponent" },
+		{ "ModuleRelativePath", "TriggerComponent.h" },
+	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_MoverActor;
 	static void NewProp_IsPressurePlate_SetBit(void* Obj);
 	static const UECodeGen_Private::FBoolPropertyParams NewProp_IsPressurePlate;
 	static void NewProp_IsTriggered_SetBit(void* Obj);
 	static const UECodeGen_Private::FBoolPropertyParams NewProp_IsTriggered;
+	static const UECodeGen_Private::FIntPropertyParams NewProp_ActivatorCount;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
@@ -265,10 +270,12 @@ void Z_Construct_UClass_UTriggerComponent_Statics::NewProp_IsTriggered_SetBit(vo
 	((UTriggerComponent*)Obj)->IsTriggered = 1;
 }
 const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_UTriggerComponent_Statics::NewProp_IsTriggered = { "IsTriggered", nullptr, (EPropertyFlags)0x0010000000020001, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(UTriggerComponent), &Z_Construct_UClass_UTriggerComponent_Statics::NewProp_IsTriggered_SetBit, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_IsTriggered_MetaData), NewProp_IsTriggered_MetaData) };
+const UECodeGen_Private::FIntPropertyParams Z_Construct_UClass_UTriggerComponent_Statics::NewProp_ActivatorCount = { "ActivatorCount", nullptr, (EPropertyFlags)0x0010000000020001, UECodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UTriggerComponent, ActivatorCount), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ActivatorCount_MetaData), NewProp_ActivatorCount_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UTriggerComponent_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UTriggerComponent_Statics::NewProp_MoverActor,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UTriggerComponent_Statics::NewProp_IsPressurePlate,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UTriggerComponent_Statics::NewProp_IsTriggered,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UTriggerComponent_Statics::NewProp_ActivatorCount,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_UTriggerComponent_Statics::PropPointers) < 2048);
 UObject* (*const Z_Construct_UClass_UTriggerComponent_Statics::DependentSingletons[])() = {
@@ -307,10 +314,10 @@ UTriggerComponent::~UTriggerComponent() {}
 struct Z_CompiledInDeferFile_FID_UnrealProjects_UE_Practice_DungeonEscape_Source_DungeonEscape_TriggerComponent_h__Script_DungeonEscape_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UTriggerComponent, UTriggerComponent::StaticClass, TEXT("UTriggerComponent"), &Z_Registration_Info_UClass_UTriggerComponent, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UTriggerComponent), 1049625122U) },
+		{ Z_Construct_UClass_UTriggerComponent, UTriggerComponent::StaticClass, TEXT("UTriggerComponent"), &Z_Registration_Info_UClass_UTriggerComponent, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UTriggerComponent), 2489730122U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_UnrealProjects_UE_Practice_DungeonEscape_Source_DungeonEscape_TriggerComponent_h__Script_DungeonEscape_3365326988(TEXT("/Script/DungeonEscape"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_UnrealProjects_UE_Practice_DungeonEscape_Source_DungeonEscape_TriggerComponent_h__Script_DungeonEscape_100536917(TEXT("/Script/DungeonEscape"),
 	Z_CompiledInDeferFile_FID_UnrealProjects_UE_Practice_DungeonEscape_Source_DungeonEscape_TriggerComponent_h__Script_DungeonEscape_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_UnrealProjects_UE_Practice_DungeonEscape_Source_DungeonEscape_TriggerComponent_h__Script_DungeonEscape_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
