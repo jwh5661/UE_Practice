@@ -123,5 +123,8 @@ void ADungeonEscapeCharacter::DoJumpEnd()
 
 void ADungeonEscapeCharacter::Interact()
 {
-	UE_LOG(LogTemp, Display, TEXT("Interact!"));
+	UE_LOG(LogTemp, Display, TEXT("%f!"), GetWorld()->TimeSeconds);
+
+	//GetWorld()->SweepSingleByChannel();
+
 }
