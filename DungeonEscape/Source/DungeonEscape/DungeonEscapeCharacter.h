@@ -51,6 +51,12 @@ protected:
 
 	UPROPERTY(EditAnywhere, Category = "Input")
 	class UInputAction* InteractAction;
+
+	UPROPERTY(EditAnywhere)
+	float MaxInteractionDistance = 300.0f;
+
+	UPROPERTY(EditAnywhere)
+	float InteractionSphereRadius = 30.0f;
 	
 public:
 	ADungeonEscapeCharacter();
@@ -96,7 +102,7 @@ public:
 	/** Returns first person camera component **/
 	UCameraComponent* GetFirstPersonCameraComponent() const { return FirstPersonCameraComponent; }
 
-	
+	void SetVector(FVector& OutMyVector);
 
 };
 

@@ -68,6 +68,13 @@ void ADungeonEscapeCharacter::SetupPlayerInputComponent(UInputComponent* PlayerI
 	}
 }
 
+void ADungeonEscapeCharacter::SetVector(FVector& OutMyVector)
+{
+	OutMyVector.X = 10.0f;
+	OutMyVector.Y = 10.0f;
+	OutMyVector.Z = 10.0f;
+}
+
 
 void ADungeonEscapeCharacter::MoveInput(const FInputActionValue& Value)
 {
@@ -123,8 +130,22 @@ void ADungeonEscapeCharacter::DoJumpEnd()
 
 void ADungeonEscapeCharacter::Interact()
 {
-	UE_LOG(LogTemp, Display, TEXT("%f!"), GetWorld()->TimeSeconds);
+	//UE_LOG(LogTemp, Display, TEXT("%f!"), GetWorld()->TimeSeconds);
 
 	//GetWorld()->SweepSingleByChannel();
 
+	FVector Start = FirstPersonCameraComponent->GetComponentLocation();
+	FVector End = Start + FirstPersonCameraComponent->GetForwardVector() * MaxInteractionDistance;
+
+	DrawDebugLine(GetWorld(), Start, End, FColor::Red, false, 5.0f);
+
+	FCollisionShape InteractionSphere = FCollisionShape::MakeSphere(InteractionSphereRadius);
+	//DrawDebugSphere(GetWorld(), Start, InteractionSphereRadius, 20, FColor::Green, false, 5.0f);
+	DrawDebugSphere(GetWorld(), End, InteractionSphereRadius, 20, FColor::Blue, false, 5.0f);
+
+	FVector MyVec = FVector(1.0f, 1.0f, 1.0f);
+	UE_LOG(LogTemp, Display, TEXT("%s"), *MyVec.ToCompactString());
+
+	SetVector(MyVec);
+	UE_LOG(LogTemp, Display, TEXT("%s"), *MyVec.ToCompactString());
 }
