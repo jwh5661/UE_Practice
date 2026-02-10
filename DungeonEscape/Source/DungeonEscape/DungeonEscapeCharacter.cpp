@@ -10,6 +10,9 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "DungeonEscape.h"
 
+#include "CollectableItem.h"
+#include "Lock.h"
+
 ADungeonEscapeCharacter::ADungeonEscapeCharacter()
 {
 	// Set size for collision capsule
@@ -68,14 +71,6 @@ void ADungeonEscapeCharacter::SetupPlayerInputComponent(UInputComponent* PlayerI
 	}
 }
 
-void ADungeonEscapeCharacter::SetVector(FVector& OutMyVector)
-{
-	OutMyVector.X = 10.0f;
-	OutMyVector.Y = 10.0f;
-	OutMyVector.Z = 10.0f;
-}
-
-
 void ADungeonEscapeCharacter::MoveInput(const FInputActionValue& Value)
 {
 	// get the Vector2D move axis
@@ -130,10 +125,6 @@ void ADungeonEscapeCharacter::DoJumpEnd()
 
 void ADungeonEscapeCharacter::Interact()
 {
-	//UE_LOG(LogTemp, Display, TEXT("%f!"), GetWorld()->TimeSeconds);
-
-	//GetWorld()->SweepSingleByChannel();
-
 	FVector Start = FirstPersonCameraComponent->GetComponentLocation();
 	FVector End = Start + FirstPersonCameraComponent->GetForwardVector() * MaxInteractionDistance;
 
@@ -143,9 +134,47 @@ void ADungeonEscapeCharacter::Interact()
 	//DrawDebugSphere(GetWorld(), Start, InteractionSphereRadius, 20, FColor::Green, false, 5.0f);
 	DrawDebugSphere(GetWorld(), End, InteractionSphereRadius, 20, FColor::Blue, false, 5.0f);
 
-	FVector MyVec = FVector(1.0f, 1.0f, 1.0f);
-	UE_LOG(LogTemp, Display, TEXT("%s"), *MyVec.ToCompactString());
+	FHitResult HitResult;
+	bool HasHit = GetWorld()->SweepSingleByChannel(
+		HitResult, 
+		Start, End, 
+		FQuat::Identity,
+		ECC_GameTraceChannel2, 
+		InteractionSphere
+	);
 
-	SetVector(MyVec);
-	UE_LOG(LogTemp, Display, TEXT("%s"), *MyVec.ToCompactString());
+	if (HasHit)
+	{
+		AActor* HitActor = HitResult.GetActor();
+		
+		if (HitActor->ActorHasTag("CollectableItem"))
+		{
+			// HitActor is a collectable item
+			ACollectableItem* CollectableItem = 
+				Cast<ACollectableItem>(HitActor);
+
+			if (CollectableItem)
+			{
+				UE_LOG(LogTemp, Display, 
+					TEXT("Collectable Item %s!"), *CollectableItem->ItemName);
+				
+			}
+		}
+		else if (HitActor->ActorHasTag("Lock"))
+		{
+			// HitActor is a lock ator
+			ALock* Lock = Cast<ALock>(HitActor);
+
+			if (Lock)
+			{
+				UE_LOG(LogTemp, Display, 
+					TEXT("Lcok Actor with key item name %s!"), *Lock->KeyItemName);
+			}
+			
+		}
+	}
+	else
+	{
+		UE_LOG(LogTemp, Display, TEXT("No actor hit!"));
+	}
 }

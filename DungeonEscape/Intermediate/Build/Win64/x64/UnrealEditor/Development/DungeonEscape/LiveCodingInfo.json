@@ -3,10 +3,13 @@
 	{
 		"Module.DungeonEscape.cpp.obj": [
 			"CollectableItem.gen.cpp.obj",
+			"DungeonEscape.init.gen.cpp.obj",
 			"DungeonEscapeCameraManager.gen.cpp.obj",
+			"DungeonEscapeCharacter.gen.cpp.obj",
 			"DungeonEscapeGameMode.gen.cpp.obj",
 			"DungeonEscapePlayerController.gen.cpp.obj",
 			"EnvQueryContext_Target.gen.cpp.obj",
+			"HorrorCharacter.gen.cpp.obj",
 			"HorrorGameMode.gen.cpp.obj",
 			"HorrorPlayerController.gen.cpp.obj",
 			"HorrorUI.gen.cpp.obj",
@@ -14,7 +17,9 @@
 			"Mover.gen.cpp.obj",
 			"ShooterAIController.gen.cpp.obj",
 			"ShooterBulletCounterUI.gen.cpp.obj",
+			"ShooterCharacter.gen.cpp.obj",
 			"ShooterGameMode.gen.cpp.obj",
+			"ShooterNPC.gen.cpp.obj",
 			"ShooterPickup.gen.cpp.obj",
 			"ShooterPlayerController.gen.cpp.obj",
 			"ShooterProjectile.gen.cpp.obj",
@@ -48,11 +53,6 @@
 			"ShooterProjectile.cpp.obj",
 			"ShooterWeapon.cpp.obj",
 			"ShooterWeaponHolder.cpp.obj",
-			"DungeonEscape.init.gen.cpp.obj",
-			"DungeonEscapeCharacter.gen.cpp.obj",
-			"HorrorCharacter.gen.cpp.obj",
-			"ShooterCharacter.gen.cpp.obj",
-			"ShooterNPC.gen.cpp.obj",
 			"PerModuleInline.gen.cpp.obj",
 			"DungeonEscapeCharacter.cpp.obj"
 		]
