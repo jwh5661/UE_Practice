@@ -363,6 +363,10 @@ struct Z_Construct_UClass_ADungeonEscapeCharacter_Statics
 		{ "Category", "DungeonEscapeCharacter" },
 		{ "ModuleRelativePath", "DungeonEscapeCharacter.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_ItemList_MetaData[] = {
+		{ "Category", "DungeonEscapeCharacter" },
+		{ "ModuleRelativePath", "DungeonEscapeCharacter.h" },
+	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_FirstPersonMesh;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_FirstPersonCameraComponent;
@@ -373,6 +377,8 @@ struct Z_Construct_UClass_ADungeonEscapeCharacter_Statics
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_InteractAction;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_MaxInteractionDistance;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_InteractionSphereRadius;
+	static const UECodeGen_Private::FStrPropertyParams NewProp_ItemList_Inner;
+	static const UECodeGen_Private::FArrayPropertyParams NewProp_ItemList;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
@@ -397,6 +403,8 @@ const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ADungeonEscape
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ADungeonEscapeCharacter_Statics::NewProp_InteractAction = { "InteractAction", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ADungeonEscapeCharacter, InteractAction), Z_Construct_UClass_UInputAction_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_InteractAction_MetaData), NewProp_InteractAction_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_ADungeonEscapeCharacter_Statics::NewProp_MaxInteractionDistance = { "MaxInteractionDistance", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ADungeonEscapeCharacter, MaxInteractionDistance), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MaxInteractionDistance_MetaData), NewProp_MaxInteractionDistance_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_ADungeonEscapeCharacter_Statics::NewProp_InteractionSphereRadius = { "InteractionSphereRadius", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ADungeonEscapeCharacter, InteractionSphereRadius), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_InteractionSphereRadius_MetaData), NewProp_InteractionSphereRadius_MetaData) };
+const UECodeGen_Private::FStrPropertyParams Z_Construct_UClass_ADungeonEscapeCharacter_Statics::NewProp_ItemList_Inner = { "ItemList", nullptr, (EPropertyFlags)0x0000000000020000, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FArrayPropertyParams Z_Construct_UClass_ADungeonEscapeCharacter_Statics::NewProp_ItemList = { "ItemList", nullptr, (EPropertyFlags)0x0040000000020001, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ADungeonEscapeCharacter, ItemList), EArrayPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ItemList_MetaData), NewProp_ItemList_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_ADungeonEscapeCharacter_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ADungeonEscapeCharacter_Statics::NewProp_FirstPersonMesh,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ADungeonEscapeCharacter_Statics::NewProp_FirstPersonCameraComponent,
@@ -407,6 +415,8 @@ const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_ADungeonE
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ADungeonEscapeCharacter_Statics::NewProp_InteractAction,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ADungeonEscapeCharacter_Statics::NewProp_MaxInteractionDistance,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ADungeonEscapeCharacter_Statics::NewProp_InteractionSphereRadius,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ADungeonEscapeCharacter_Statics::NewProp_ItemList_Inner,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ADungeonEscapeCharacter_Statics::NewProp_ItemList,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_ADungeonEscapeCharacter_Statics::PropPointers) < 2048);
 UObject* (*const Z_Construct_UClass_ADungeonEscapeCharacter_Statics::DependentSingletons[])() = {
@@ -445,10 +455,10 @@ ADungeonEscapeCharacter::~ADungeonEscapeCharacter() {}
 struct Z_CompiledInDeferFile_FID_UnrealProjects_UE_Practice_DungeonEscape_Source_DungeonEscape_DungeonEscapeCharacter_h__Script_DungeonEscape_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_ADungeonEscapeCharacter, ADungeonEscapeCharacter::StaticClass, TEXT("ADungeonEscapeCharacter"), &Z_Registration_Info_UClass_ADungeonEscapeCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ADungeonEscapeCharacter), 176068246U) },
+		{ Z_Construct_UClass_ADungeonEscapeCharacter, ADungeonEscapeCharacter::StaticClass, TEXT("ADungeonEscapeCharacter"), &Z_Registration_Info_UClass_ADungeonEscapeCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ADungeonEscapeCharacter), 2528841315U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_UnrealProjects_UE_Practice_DungeonEscape_Source_DungeonEscape_DungeonEscapeCharacter_h__Script_DungeonEscape_3565935912(TEXT("/Script/DungeonEscape"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_UnrealProjects_UE_Practice_DungeonEscape_Source_DungeonEscape_DungeonEscapeCharacter_h__Script_DungeonEscape_3263541930(TEXT("/Script/DungeonEscape"),
 	Z_CompiledInDeferFile_FID_UnrealProjects_UE_Practice_DungeonEscape_Source_DungeonEscape_DungeonEscapeCharacter_h__Script_DungeonEscape_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_UnrealProjects_UE_Practice_DungeonEscape_Source_DungeonEscape_DungeonEscapeCharacter_h__Script_DungeonEscape_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

@@ -57,6 +57,10 @@ protected:
 
 	UPROPERTY(EditAnywhere)
 	float InteractionSphereRadius = 30.0f;
+
+private:
+	UPROPERTY(VisibleAnywhere)
+	TArray<FString> ItemList;
 	
 public:
 	ADungeonEscapeCharacter();
