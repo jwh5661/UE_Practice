@@ -28,10 +28,10 @@
 			"ShooterWeapon.gen.cpp.obj",
 			"ShooterWeaponHolder.gen.cpp.obj",
 			"TriggerComponent.gen.cpp.obj",
-			"PerModuleInline.gen.cpp.obj",
 			"CollectableItem.cpp.obj",
 			"DungeonEscape.cpp.obj",
 			"DungeonEscapeCameraManager.cpp.obj",
+			"DungeonEscapeCharacter.cpp.obj",
 			"DungeonEscapeGameMode.cpp.obj",
 			"DungeonEscapePlayerController.cpp.obj",
 			"Lock.cpp.obj",
@@ -54,7 +54,7 @@
 			"ShooterProjectile.cpp.obj",
 			"ShooterWeapon.cpp.obj",
 			"ShooterWeaponHolder.cpp.obj",
-			"DungeonEscapeCharacter.cpp.obj"
+			"PerModuleInline.gen.cpp.obj"
 		]
 	}
 }
