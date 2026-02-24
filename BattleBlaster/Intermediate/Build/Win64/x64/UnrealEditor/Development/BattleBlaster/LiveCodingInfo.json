@@ -3,8 +3,8 @@
 	{
 		"Module.BattleBlaster.gen.cpp.obj": [
 			"BasePawn.gen.cpp.obj",
-			"BattleBlaster.init.gen.cpp.obj",
 			"BattleBlasterGameMode.gen.cpp.obj",
+			"BattleBlaster.init.gen.cpp.obj",
 			"Tank.gen.cpp.obj"
 		]
 	}
