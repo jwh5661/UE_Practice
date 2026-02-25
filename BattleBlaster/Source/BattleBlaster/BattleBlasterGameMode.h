@@ -14,4 +14,10 @@ class BATTLEBLASTER_API ABattleBlasterGameMode : public AGameModeBase
 {
 	GENERATED_BODY()
 	
+protected:
+	virtual void BeginPlay() override;
+
+public:
+	class ATank* Tank;
+	int32 TowerCount;
 };

@@ -3,3 +3,30 @@
 
 #include "BattleBlasterGameMode.h"
 
+#include "Kismet/GameplayStatics.h"
+#include "Tank.h"
+#include "Tower.h"
+
+void ABattleBlasterGameMode::BeginPlay()
+{
+	Super::BeginPlay();
+
+	TArray<AActor*> Towers;
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ATower::StaticClass(), Towers);
+	TowerCount = Towers.Num();
+	UE_LOG(LogTemp, Display, TEXT("Number of towers : %d"), TowerCount);
+
+	if (APawn* PlayerPawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0))
+	{
+		Tank = Cast<ATank>(PlayerPawn);
+
+		if (Tank)
+		{
+
+		}
+		else
+		{
+			UE_LOG(LogTemp, Display, TEXT("unsuccessful"));
+		}
+	}
+}
