@@ -20,5 +20,16 @@ protected:
 public:
 	virtual void Tick(float DeltaTime) override;
 
+	void CheckFireCondition();
+
+	bool IsInFireRange();
+
+public:
+	UPROPERTY(EditAnywhere)
+	float FireRange	= 300.0f;
+
+	UPROPERTY(EditAnywhere)
+	float FireRate = 2.0f;
+
 	class ATank* Tank;
 };
