@@ -18,6 +18,9 @@ protected:
 	virtual void BeginPlay() override;
 
 public:
+	void ActorDied(AActor* DeadActor);
+
+public:
 	class ATank* Tank;
 	int32 TowerCount;
 };

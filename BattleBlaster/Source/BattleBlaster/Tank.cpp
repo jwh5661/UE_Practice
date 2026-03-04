@@ -12,7 +12,8 @@ void ATank::BeginPlay()
 {
 	Super::BeginPlay();
 	
-	if (APlayerController* PlayerController = Cast<APlayerController>(Controller))
+	PlayerController = Cast<APlayerController>(Controller);
+	if (PlayerController)
 	{
 		if (ULocalPlayer* LocalPlayer = PlayerController->GetLocalPlayer())
 		{
@@ -40,7 +41,7 @@ void ATank::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	if (APlayerController* PlayerController = Cast<APlayerController>(Controller))
+	if (PlayerController)
 	{
 		FHitResult HitResult;
 		PlayerController->GetHitResultUnderCursor(ECC_Visibility, false, HitResult);
@@ -77,4 +78,36 @@ void ATank::TurnInput(const FInputActionValue& Value)
 	
 	FQuat DeltaRotation = FQuat(FRotator(0.0f, TurnRate * InputValue * UGameplayStatics::GetWorldDeltaSeconds(GetWorld()), 0.0f));
 	AddActorLocalRotation(DeltaRotation, true);
+}
+
+void ATank::HandleDestruction()
+{
+	Super::HandleDestruction();
+
+	SetActorHiddenInGame(true);
+	SetActorTickEnabled(false);
+	SetPlayerEnabled(false);
+
+	IsAlive = false;
+}
+
+void ATank::SetPlayerEnabled(bool Enabled)
+{
+	if (PlayerController)
+	{
+		if (Enabled)
+			EnableInput(PlayerController);
+		else
+			DisableInput(PlayerController);
+	}
+}
+
+bool ATank::GetIsAlive()
+{
+	return IsAlive;
+}
+
+void ATank::SetIsAlive(bool isAlive)
+{
+	IsAlive = isAlive;
 }

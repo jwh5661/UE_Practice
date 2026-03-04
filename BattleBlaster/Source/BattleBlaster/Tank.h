@@ -36,8 +36,11 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	void MoveInput(const FInputActionValue& Value);
-
 	void TurnInput(const FInputActionValue& Value);
+	void HandleDestruction();
+	void SetPlayerEnabled(bool Enabled);
+	bool GetIsAlive();
+	void SetIsAlive(bool isAlive);
 
 public:
 	UPROPERTY(EditAnywhere, Category = "Input")
@@ -63,4 +66,9 @@ public:
 
 	UPROPERTY(EditAnywhere)
 	float TurnRate = 100.0f;
+
+	APlayerController* PlayerController;
+
+protected:
+	bool IsAlive = true;
 };

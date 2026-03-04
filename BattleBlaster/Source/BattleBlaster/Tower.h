@@ -24,6 +24,8 @@ public:
 
 	bool IsInFireRange();
 
+	void HandleDestruction();
+
 public:
 	UPROPERTY(EditAnywhere)
 	float FireRange	= 300.0f;

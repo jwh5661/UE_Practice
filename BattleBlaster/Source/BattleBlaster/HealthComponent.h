@@ -3,7 +3,10 @@
 #pragma once
 
 #include "CoreMinimal.h"
+
 #include "Components/ActorComponent.h"
+#include "BattleBlasterGameMode.h"
+
 #include "HealthComponent.generated.h"
 
 
@@ -37,4 +40,6 @@ public:
 
 	UPROPERTY(VisibleAnywhere)
 	float Health;
+
+	ABattleBlasterGameMode* BattleBlasterGameMode;
 };

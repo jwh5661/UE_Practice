@@ -7,7 +7,22 @@
         "Includes": [
             "c:\\unrealprojects\\ue_practice\\battleblaster\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\battleblaster\\definitions.battleblaster.h",
             "c:\\unrealprojects\\ue_practice\\battleblaster\\source\\battleblaster\\healthcomponent.h",
-            "c:\\unrealprojects\\ue_practice\\battleblaster\\intermediate\\build\\win64\\unrealeditor\\inc\\battleblaster\\uht\\healthcomponent.generated.h"
+            "c:\\unrealprojects\\ue_practice\\battleblaster\\source\\battleblaster\\battleblastergamemode.h",
+            "c:\\program files\\epic games\\ue_5.6\\engine\\source\\runtime\\engine\\classes\\gameframework\\gamemodebase.h",
+            "c:\\program files\\epic games\\ue_5.6\\engine\\source\\runtime\\engine\\classes\\engine\\serverstatreplicator.h",
+            "c:\\program files\\epic games\\ue_5.6\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\serverstatreplicator.generated.h",
+            "c:\\program files\\epic games\\ue_5.6\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\gamemodebase.generated.h",
+            "c:\\unrealprojects\\ue_practice\\battleblaster\\intermediate\\build\\win64\\unrealeditor\\inc\\battleblaster\\uht\\battleblastergamemode.generated.h",
+            "c:\\unrealprojects\\ue_practice\\battleblaster\\intermediate\\build\\win64\\unrealeditor\\inc\\battleblaster\\uht\\healthcomponent.generated.h",
+            "c:\\program files\\epic games\\ue_5.6\\engine\\source\\runtime\\engine\\classes\\kismet\\gameplaystatics.h",
+            "c:\\program files\\epic games\\ue_5.6\\engine\\source\\runtime\\engine\\classes\\kismet\\kismetsystemlibrary.h",
+            "c:\\program files\\epic games\\ue_5.6\\engine\\source\\runtime\\coreuobject\\public\\uobject\\propertyaccessutil.h",
+            "c:\\program files\\epic games\\ue_5.6\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\kismetsystemlibrary.generated.h",
+            "c:\\program files\\epic games\\ue_5.6\\engine\\source\\runtime\\engine\\classes\\sound\\dialoguetypes.h",
+            "c:\\program files\\epic games\\ue_5.6\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\dialoguetypes.generated.h",
+            "c:\\program files\\epic games\\ue_5.6\\engine\\source\\runtime\\engine\\classes\\kismet\\gameplaystaticstypes.h",
+            "c:\\program files\\epic games\\ue_5.6\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\gameplaystaticstypes.generated.h",
+            "c:\\program files\\epic games\\ue_5.6\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\gameplaystatics.generated.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []
