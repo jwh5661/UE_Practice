@@ -20,7 +20,14 @@ protected:
 public:
 	void ActorDied(AActor* DeadActor);
 
+	void OnGameOverTimerTimeout();
 public:
+	UPROPERTY(EditAnywhere)
+	float GameOverDelay = 3.0f;
+
 	class ATank* Tank;
+
 	int32 TowerCount;
+
+	bool IsVictory = false;
 };
