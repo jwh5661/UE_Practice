@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
+
 #include "BattleBlasterGameMode.generated.h"
 
 /**
@@ -21,9 +22,24 @@ public:
 	void ActorDied(AActor* DeadActor);
 
 	void OnGameOverTimerTimeout();
+
+	void OnCountdownTimerTimeout();
+
 public:
 	UPROPERTY(EditAnywhere)
+	TSubclassOf<class UScreenMessage> ScreenMessageClass;
+
+	UScreenMessage* ScreenMessageWidget;
+
+	UPROPERTY(EditAnywhere)
 	float GameOverDelay = 3.0f;
+
+	UPROPERTY(EditAnywhere)
+	int32 CountdownDelay = 3;
+
+	int32 CountdownSeconds;
+
+	FTimerHandle CountdownTimerHandle;
 
 	class ATank* Tank;
 
