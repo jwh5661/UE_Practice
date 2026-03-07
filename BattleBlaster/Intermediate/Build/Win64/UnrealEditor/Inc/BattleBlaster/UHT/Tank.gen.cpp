@@ -171,10 +171,10 @@ ATank::~ATank() {}
 struct Z_CompiledInDeferFile_FID_UnrealProjects_UE_Practice_BattleBlaster_Source_BattleBlaster_Tank_h__Script_BattleBlaster_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_ATank, ATank::StaticClass, TEXT("ATank"), &Z_Registration_Info_UClass_ATank, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ATank), 1677001951U) },
+		{ Z_Construct_UClass_ATank, ATank::StaticClass, TEXT("ATank"), &Z_Registration_Info_UClass_ATank, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ATank), 2831896952U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_UnrealProjects_UE_Practice_BattleBlaster_Source_BattleBlaster_Tank_h__Script_BattleBlaster_3598333838(TEXT("/Script/BattleBlaster"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_UnrealProjects_UE_Practice_BattleBlaster_Source_BattleBlaster_Tank_h__Script_BattleBlaster_3009858208(TEXT("/Script/BattleBlaster"),
 	Z_CompiledInDeferFile_FID_UnrealProjects_UE_Practice_BattleBlaster_Source_BattleBlaster_Tank_h__Script_BattleBlaster_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_UnrealProjects_UE_Practice_BattleBlaster_Source_BattleBlaster_Tank_h__Script_BattleBlaster_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

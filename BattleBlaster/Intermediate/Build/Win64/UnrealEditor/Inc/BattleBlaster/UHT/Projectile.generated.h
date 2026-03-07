@@ -21,13 +21,13 @@ class UPrimitiveComponent;
 struct FHitResult;
 
 // ********** Begin Class AProjectile **************************************************************
-#define FID_UnrealProjects_UE_Practice_BattleBlaster_Source_BattleBlaster_Projectile_h_12_RPC_WRAPPERS_NO_PURE_DECLS \
+#define FID_UnrealProjects_UE_Practice_BattleBlaster_Source_BattleBlaster_Projectile_h_16_RPC_WRAPPERS_NO_PURE_DECLS \
 	DECLARE_FUNCTION(execOnHit);
 
 
 BATTLEBLASTER_API UClass* Z_Construct_UClass_AProjectile_NoRegister();
 
-#define FID_UnrealProjects_UE_Practice_BattleBlaster_Source_BattleBlaster_Projectile_h_12_INCLASS_NO_PURE_DECLS \
+#define FID_UnrealProjects_UE_Practice_BattleBlaster_Source_BattleBlaster_Projectile_h_16_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesAProjectile(); \
 	friend struct Z_Construct_UClass_AProjectile_Statics; \
@@ -38,7 +38,7 @@ public: \
 	DECLARE_SERIALIZER(AProjectile)
 
 
-#define FID_UnrealProjects_UE_Practice_BattleBlaster_Source_BattleBlaster_Projectile_h_12_ENHANCED_CONSTRUCTORS \
+#define FID_UnrealProjects_UE_Practice_BattleBlaster_Source_BattleBlaster_Projectile_h_16_ENHANCED_CONSTRUCTORS \
 	/** Deleted move- and copy-constructors, should never be used */ \
 	AProjectile(AProjectile&&) = delete; \
 	AProjectile(const AProjectile&) = delete; \
@@ -48,13 +48,13 @@ public: \
 	NO_API virtual ~AProjectile();
 
 
-#define FID_UnrealProjects_UE_Practice_BattleBlaster_Source_BattleBlaster_Projectile_h_9_PROLOG
-#define FID_UnrealProjects_UE_Practice_BattleBlaster_Source_BattleBlaster_Projectile_h_12_GENERATED_BODY \
+#define FID_UnrealProjects_UE_Practice_BattleBlaster_Source_BattleBlaster_Projectile_h_13_PROLOG
+#define FID_UnrealProjects_UE_Practice_BattleBlaster_Source_BattleBlaster_Projectile_h_16_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_UnrealProjects_UE_Practice_BattleBlaster_Source_BattleBlaster_Projectile_h_12_RPC_WRAPPERS_NO_PURE_DECLS \
-	FID_UnrealProjects_UE_Practice_BattleBlaster_Source_BattleBlaster_Projectile_h_12_INCLASS_NO_PURE_DECLS \
-	FID_UnrealProjects_UE_Practice_BattleBlaster_Source_BattleBlaster_Projectile_h_12_ENHANCED_CONSTRUCTORS \
+	FID_UnrealProjects_UE_Practice_BattleBlaster_Source_BattleBlaster_Projectile_h_16_RPC_WRAPPERS_NO_PURE_DECLS \
+	FID_UnrealProjects_UE_Practice_BattleBlaster_Source_BattleBlaster_Projectile_h_16_INCLASS_NO_PURE_DECLS \
+	FID_UnrealProjects_UE_Practice_BattleBlaster_Source_BattleBlaster_Projectile_h_16_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

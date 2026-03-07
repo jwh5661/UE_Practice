@@ -21,6 +21,10 @@ AProjectile::AProjectile()
 		(TEXT("ProjectileMovementComp"));
 	ProjectileMovementComp->InitialSpeed = 1000.0f;
 	ProjectileMovementComp->MaxSpeed = 1000.0f;
+
+	TrailParticles = CreateDefaultSubobject<UNiagaraComponent>
+		(TEXT("TrailParticles"));
+	TrailParticles->SetupAttachment(RootComponent);
 }
 
 // Called when the game starts or when spawned
@@ -29,6 +33,11 @@ void AProjectile::BeginPlay()
 	Super::BeginPlay();
 	
 	StaticMeshComp->OnComponentHit.AddDynamic(this, &AProjectile::OnHit);
+
+	if (LaunchSound)
+	{
+		UGameplayStatics::PlaySoundAtLocation(GetWorld(), LaunchSound, GetActorLocation());
+	}
 }
 
 // Called every frame
@@ -52,6 +61,30 @@ void AProjectile::OnHit(UPrimitiveComponent* HitComponent, AActor* OtherActor, U
 				this,
 				UDamageType::StaticClass()
 			);
+
+			if (HitParticles)
+			{
+				UNiagaraFunctionLibrary::SpawnSystemAtLocation(
+					GetWorld(),
+					HitParticles,
+					GetActorLocation(),
+					GetActorRotation()
+				);
+			}
+
+			if (HitSound)
+			{
+				UGameplayStatics::PlaySoundAtLocation(GetWorld(), HitSound, GetActorLocation());
+			}
+
+			if (HitCameraShakeClass)
+			{
+				if (APlayerController* PlayerController =
+					GetWorld()->GetFirstPlayerController())
+				{
+					PlayerController->ClientStartCameraShake(HitCameraShakeClass);
+				}
+			}
 		}
 	}
 
