@@ -71,7 +71,9 @@
             "c:\\program files\\epic games\\ue_5.6\\engine\\plugins\\enhancedinput\\intermediate\\build\\win64\\unrealeditor\\inc\\enhancedinput\\uht\\enhancedplayerinput.generated.h",
             "c:\\program files\\epic games\\ue_5.6\\engine\\plugins\\enhancedinput\\intermediate\\build\\win64\\unrealeditor\\inc\\enhancedinput\\uht\\enhancedinputsubsysteminterface.generated.h",
             "c:\\program files\\epic games\\ue_5.6\\engine\\plugins\\enhancedinput\\intermediate\\build\\win64\\unrealeditor\\inc\\enhancedinput\\uht\\enhancedinputsubsystems.generated.h",
-            "c:\\unrealprojects\\ue_practice\\shootersam\\source\\shootersam\\shootersam.h"
+            "c:\\unrealprojects\\ue_practice\\shootersam\\source\\shootersam\\shootersam.h",
+            "c:\\unrealprojects\\ue_practice\\shootersam\\source\\shootersam\\gun.h",
+            "c:\\unrealprojects\\ue_practice\\shootersam\\intermediate\\build\\win64\\unrealeditor\\inc\\shootersam\\uht\\gun.generated.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

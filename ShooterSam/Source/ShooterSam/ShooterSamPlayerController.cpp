@@ -8,6 +8,7 @@
 #include "Blueprint/UserWidget.h"
 #include "ShooterSam.h"
 #include "Widgets/Input/SVirtualJoystick.h"
+#include "HUDWidget.h"
 
 void AShooterSamPlayerController::BeginPlay()
 {
@@ -30,6 +31,12 @@ void AShooterSamPlayerController::BeginPlay()
 
 		}
 
+	}
+
+	HUDWidget = CreateWidget<UHUDWidget>(this, HUDWidgetClass);
+	if (HUDWidget)
+	{
+		HUDWidget->AddToViewport();
 	}
 }
 

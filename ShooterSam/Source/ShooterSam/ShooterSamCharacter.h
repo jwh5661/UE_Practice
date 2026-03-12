@@ -49,6 +49,15 @@ protected:
 	UPROPERTY(EditAnywhere, Category="Input")
 	UInputAction* MouseLookAction;
 
+	UPROPERTY(EditAnywhere, Category = "Input")
+	UInputAction* ShootAction;
+
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<class AGun> GunClass;
+
+	UPROPERTY(VisibleAnywhere)
+	AGun* Gun;
+
 public:
 
 	/** Constructor */
@@ -59,6 +68,7 @@ protected:
 	/** Initialize input action bindings */
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+	virtual void BeginPlay() override;
 protected:
 
 	/** Called for movement input */
@@ -84,6 +94,9 @@ public:
 	/** Handles jump pressed inputs from either controls or UI interfaces */
 	UFUNCTION(BlueprintCallable, Category="Input")
 	virtual void DoJumpEnd();
+
+	UFUNCTION(BlueprintCallable, Category = "Input")
+	virtual void DoShoot();
 
 public:
 

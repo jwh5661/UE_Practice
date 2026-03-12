@@ -106,7 +106,9 @@
             "c:\\program files\\epic games\\ue_5.6\\engine\\source\\runtime\\moviescene\\public\\evaluation\\moviescenepreanimatedstate.h",
             "c:\\program files\\epic games\\ue_5.6\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\umg\\uht\\userwidget.generated.h",
             "c:\\unrealprojects\\ue_practice\\shootersam\\source\\shootersam\\shootersam.h",
-            "c:\\program files\\epic games\\ue_5.6\\engine\\source\\runtime\\slate\\public\\widgets\\input\\svirtualjoystick.h"
+            "c:\\program files\\epic games\\ue_5.6\\engine\\source\\runtime\\slate\\public\\widgets\\input\\svirtualjoystick.h",
+            "c:\\unrealprojects\\ue_practice\\shootersam\\source\\shootersam\\hudwidget.h",
+            "c:\\unrealprojects\\ue_practice\\shootersam\\intermediate\\build\\win64\\unrealeditor\\inc\\shootersam\\uht\\hudwidget.generated.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

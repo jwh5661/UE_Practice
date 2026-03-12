@@ -11,6 +11,7 @@
 #include "EnhancedInputSubsystems.h"
 #include "InputActionValue.h"
 #include "ShooterSam.h"
+#include "Gun.h"
 
 AShooterSamCharacter::AShooterSamCharacter()
 {
@@ -65,10 +66,32 @@ void AShooterSamCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInpu
 
 		// Looking
 		EnhancedInputComponent->BindAction(LookAction, ETriggerEvent::Triggered, this, &AShooterSamCharacter::Look);
+
+		// Shooting
+		EnhancedInputComponent->BindAction(ShootAction, ETriggerEvent::Started, this, &AShooterSamCharacter::DoShoot);
 	}
 	else
 	{
 		UE_LOG(LogShooterSam, Error, TEXT("'%s' Failed to find an Enhanced Input component! This template is built to use the Enhanced Input system. If you intend to use the legacy system, then you will need to update this C++ file."), *GetNameSafe(this));
+	}
+}
+
+void AShooterSamCharacter::BeginPlay()
+{
+	Super::BeginPlay();
+
+	GetMesh()->HideBoneByName("weapon_r", EPhysBodyOp::PBO_None);
+
+	if (AActor* GunActor = GetWorld()->SpawnActor(GunClass))
+	{
+		Gun = Cast<AGun>(GunActor);
+
+		if (Gun)
+		{
+			Gun->SetOwner(this);
+			Gun->AttachToComponent(GetMesh(), FAttachmentTransformRules::KeepRelativeTransform,
+				TEXT("WeaponSocket"));
+		}
 	}
 }
 
@@ -130,5 +153,11 @@ void AShooterSamCharacter::DoJumpEnd()
 {
 	// signal the character to stop jumping
 	StopJumping();
+}
+
+void AShooterSamCharacter::DoShoot()
+{
+	if (Gun)
+		Gun->PullTrigger();
 }
  
