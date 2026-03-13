@@ -31,4 +31,18 @@ public:
 
 	UPROPERTY(VisibleAnywhere)
 	USkeletalMeshComponent* SkeletalMeshComp;
+
+	UPROPERTY(VisibleAnywhere)
+	class UNiagaraComponent* MuzzleFlashParticleSystem;
+
+	UPROPERTY(EditAnywhere)
+	class UNiagaraSystem* ImpactParticleSystem;
+
+	UPROPERTY(EditAnywhere)
+	float MaxRange = 10000.0f;
+
+	UPROPERTY(EditAnywhere)
+	float BulletDamage = 10.0f;
+
+	AController* OwnerController;
 };

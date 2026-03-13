@@ -58,6 +58,13 @@ protected:
 	UPROPERTY(VisibleAnywhere)
 	AGun* Gun;
 
+	UPROPERTY(EditAnywhere)
+	float MaxHealth = 100.0f;
+
+	float Health;
+
+	bool IsAlive = true;
+
 public:
 
 	/** Constructor */
@@ -97,6 +104,9 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Input")
 	virtual void DoShoot();
+
+	UFUNCTION()
+	void OnDamageTaken(AActor* DamagedActor, float Damage, const class UDamageType* DamageType, class AController* InstigatedBy, AActor* DamageCauser);
 
 public:
 

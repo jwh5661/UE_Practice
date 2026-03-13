@@ -16,8 +16,13 @@
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
+class AActor;
+class AController;
+class UDamageType;
+
 // ********** Begin Class AShooterSamCharacter *****************************************************
 #define FID_UnrealProjects_UE_Practice_ShooterSam_Source_ShooterSam_ShooterSamCharacter_h_24_RPC_WRAPPERS_NO_PURE_DECLS \
+	DECLARE_FUNCTION(execOnDamageTaken); \
 	DECLARE_FUNCTION(execDoShoot); \
 	DECLARE_FUNCTION(execDoJumpEnd); \
 	DECLARE_FUNCTION(execDoJumpStart); \

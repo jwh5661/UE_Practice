@@ -3,6 +3,10 @@
 
 #include "Gun.h"
 
+#include "NiagaraFunctionLibrary.h"
+#include "NiagaraComponent.h"
+#include "Kismet/GameplayStatics.h"
+
 // Sets default values
 AGun::AGun()
 {
@@ -14,13 +18,17 @@ AGun::AGun()
 
 	SkeletalMeshComp = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("SkeletalMeshComp"));
 	SkeletalMeshComp->SetupAttachment(SceneComp);
+
+	MuzzleFlashParticleSystem = CreateDefaultSubobject<UNiagaraComponent>(TEXT("MuzzleFlashParticleSystem"));
+	MuzzleFlashParticleSystem->SetupAttachment(SkeletalMeshComp);
 }
 
 // Called when the game starts or when spawned
 void AGun::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
+	MuzzleFlashParticleSystem->Deactivate();
 }
 
 // Called every frame
@@ -32,5 +40,44 @@ void AGun::Tick(float DeltaTime)
 
 void AGun::PullTrigger()
 {
-	UE_LOG(LogTemp, Display, TEXT("Bang!"));
+	MuzzleFlashParticleSystem->Activate(true);
+
+	if (OwnerController)
+	{
+		FVector ViewPointLocation;
+		FRotator ViewPointRotation;
+		OwnerController->GetPlayerViewPoint(ViewPointLocation, ViewPointRotation);
+
+		FVector EndLocation = ViewPointLocation + ViewPointRotation.Vector() * MaxRange;
+
+		FHitResult HitResult;
+		FCollisionQueryParams Params;
+		Params.AddIgnoredActor(this);
+		Params.AddIgnoredActor(GetOwner());
+		bool IsHit = GetWorld()->LineTraceSingleByChannel(
+			HitResult,
+			ViewPointLocation,
+			EndLocation,
+			ECC_GameTraceChannel2,
+			Params
+		);
+
+		if (IsHit)
+		{
+			UNiagaraFunctionLibrary::SpawnSystemAtLocation(
+				GetWorld(),
+				ImpactParticleSystem,
+				HitResult.ImpactPoint,
+				HitResult.ImpactPoint.Rotation()
+			);
+
+			UGameplayStatics::ApplyDamage(
+				HitResult.GetActor(),
+				BulletDamage,
+				OwnerController,
+				this,
+				UDamageType::StaticClass()
+			);
+		}
+	}
 }
