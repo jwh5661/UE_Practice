@@ -63,6 +63,7 @@ protected:
 
 	float Health;
 
+	UPROPERTY(BlueprintReadOnly)
 	bool IsAlive = true;
 
 public:

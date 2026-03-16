@@ -438,6 +438,10 @@ struct Z_Construct_UClass_AShooterSamCharacter_Statics
 		{ "Category", "ShooterSamCharacter" },
 		{ "ModuleRelativePath", "ShooterSamCharacter.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_IsAlive_MetaData[] = {
+		{ "Category", "ShooterSamCharacter" },
+		{ "ModuleRelativePath", "ShooterSamCharacter.h" },
+	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_CameraBoom;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_FollowCamera;
@@ -449,6 +453,8 @@ struct Z_Construct_UClass_AShooterSamCharacter_Statics
 	static const UECodeGen_Private::FClassPropertyParams NewProp_GunClass;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_Gun;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_MaxHealth;
+	static void NewProp_IsAlive_SetBit(void* Obj);
+	static const UECodeGen_Private::FBoolPropertyParams NewProp_IsAlive;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
@@ -475,6 +481,11 @@ const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AShooterSamCha
 const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_AShooterSamCharacter_Statics::NewProp_GunClass = { "GunClass", nullptr, (EPropertyFlags)0x0024080000000001, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AShooterSamCharacter, GunClass), Z_Construct_UClass_UClass, Z_Construct_UClass_AGun_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_GunClass_MetaData), NewProp_GunClass_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AShooterSamCharacter_Statics::NewProp_Gun = { "Gun", nullptr, (EPropertyFlags)0x0020080000020001, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AShooterSamCharacter, Gun), Z_Construct_UClass_AGun_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Gun_MetaData), NewProp_Gun_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AShooterSamCharacter_Statics::NewProp_MaxHealth = { "MaxHealth", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AShooterSamCharacter, MaxHealth), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MaxHealth_MetaData), NewProp_MaxHealth_MetaData) };
+void Z_Construct_UClass_AShooterSamCharacter_Statics::NewProp_IsAlive_SetBit(void* Obj)
+{
+	((AShooterSamCharacter*)Obj)->IsAlive = 1;
+}
+const UECodeGen_Private::FBoolPropertyParams Z_Construct_UClass_AShooterSamCharacter_Statics::NewProp_IsAlive = { "IsAlive", nullptr, (EPropertyFlags)0x0020080000000014, UECodeGen_Private::EPropertyGenFlags::Bool | UECodeGen_Private::EPropertyGenFlags::NativeBool, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, sizeof(bool), sizeof(AShooterSamCharacter), &Z_Construct_UClass_AShooterSamCharacter_Statics::NewProp_IsAlive_SetBit, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_IsAlive_MetaData), NewProp_IsAlive_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AShooterSamCharacter_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AShooterSamCharacter_Statics::NewProp_CameraBoom,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AShooterSamCharacter_Statics::NewProp_FollowCamera,
@@ -486,6 +497,7 @@ const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AShooterS
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AShooterSamCharacter_Statics::NewProp_GunClass,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AShooterSamCharacter_Statics::NewProp_Gun,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AShooterSamCharacter_Statics::NewProp_MaxHealth,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AShooterSamCharacter_Statics::NewProp_IsAlive,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_AShooterSamCharacter_Statics::PropPointers) < 2048);
 UObject* (*const Z_Construct_UClass_AShooterSamCharacter_Statics::DependentSingletons[])() = {
@@ -524,10 +536,10 @@ AShooterSamCharacter::~AShooterSamCharacter() {}
 struct Z_CompiledInDeferFile_FID_UnrealProjects_UE_Practice_ShooterSam_Source_ShooterSam_ShooterSamCharacter_h__Script_ShooterSam_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AShooterSamCharacter, AShooterSamCharacter::StaticClass, TEXT("AShooterSamCharacter"), &Z_Registration_Info_UClass_AShooterSamCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AShooterSamCharacter), 1474403460U) },
+		{ Z_Construct_UClass_AShooterSamCharacter, AShooterSamCharacter::StaticClass, TEXT("AShooterSamCharacter"), &Z_Registration_Info_UClass_AShooterSamCharacter, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AShooterSamCharacter), 3500350158U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_UnrealProjects_UE_Practice_ShooterSam_Source_ShooterSam_ShooterSamCharacter_h__Script_ShooterSam_3192544739(TEXT("/Script/ShooterSam"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_UnrealProjects_UE_Practice_ShooterSam_Source_ShooterSam_ShooterSamCharacter_h__Script_ShooterSam_138616580(TEXT("/Script/ShooterSam"),
 	Z_CompiledInDeferFile_FID_UnrealProjects_UE_Practice_ShooterSam_Source_ShooterSam_ShooterSamCharacter_h__Script_ShooterSam_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_UnrealProjects_UE_Practice_ShooterSam_Source_ShooterSam_ShooterSamCharacter_h__Script_ShooterSam_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

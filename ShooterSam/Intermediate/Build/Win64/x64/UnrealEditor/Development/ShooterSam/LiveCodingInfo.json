@@ -25,6 +25,7 @@
 		],
 		"Module.ShooterSam.2.cpp.obj": [
 			"EnvQueryContext_Player.gen.cpp.obj",
+			"Gun.gen.cpp.obj",
 			"HUDWidget.gen.cpp.obj",
 			"PlatformingCharacter.gen.cpp.obj",
 			"PlatformingGameMode.gen.cpp.obj",
@@ -44,6 +45,8 @@
 			"SideScrollingSoftPlatform.gen.cpp.obj",
 			"SideScrollingStateTreeUtility.gen.cpp.obj",
 			"SideScrollingUI.gen.cpp.obj",
+			"PerModuleInline.gen.cpp.obj",
+			"Gun.cpp.obj",
 			"HUDWidget.cpp.obj",
 			"ShooterSam.cpp.obj",
 			"ShooterSamGameMode.cpp.obj",
@@ -57,11 +60,8 @@
 			"AnimNotify_CheckCombo.cpp.obj",
 			"AnimNotify_DoAttackTrace.cpp.obj",
 			"CombatCharacter.cpp.obj",
-			"Gun.gen.cpp.obj",
 			"ShooterSam.init.gen.cpp.obj",
 			"ShooterSamCharacter.gen.cpp.obj",
-			"PerModuleInline.gen.cpp.obj",
-			"Gun.cpp.obj",
 			"ShooterSamCharacter.cpp.obj"
 		],
 		"Module.ShooterSam.3.cpp.obj": [
