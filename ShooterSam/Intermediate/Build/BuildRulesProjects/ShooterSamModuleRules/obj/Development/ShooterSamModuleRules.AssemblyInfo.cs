@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ShooterSamModuleRules")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Development")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2e665e047cf5c607a229b892626f18236282ddeb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2ef451a21aac6a52af0abb85466b17dd4d9640ab")]
 [assembly: System.Reflection.AssemblyProductAttribute("ShooterSamModuleRules")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ShooterSamModuleRules")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

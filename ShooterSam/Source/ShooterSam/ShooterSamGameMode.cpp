@@ -24,4 +24,13 @@ void AShooterSamGameMode::BeginPlay()
 		GetWorld(), AShooterAI::StaticClass(), ShooterAIActors
 	);
 
+	for (AActor* ShooterAIActor : ShooterAIActors)
+	{
+		AShooterAI* ShooterAI = Cast<AShooterAI>(ShooterAIActor);
+
+		if (ShooterAI)
+		{
+			ShooterAI->StartBehaviorTree(Player);
+		}
+	}
 }
