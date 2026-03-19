@@ -21,7 +21,10 @@
 			"CombatLavaFloor.gen.cpp.obj",
 			"CombatLifeBar.gen.cpp.obj",
 			"CombatPlayerController.gen.cpp.obj",
-			"CombatStateTreeUtility.gen.cpp.obj"
+			"CombatStateTreeUtility.gen.cpp.obj",
+			"BTService_PlayerLocation.gen.cpp.obj",
+			"BTService_PlayerLocationIfSeen.gen.cpp.obj",
+			"BTTask_ClearBlackboardValue.gen.cpp.obj"
 		],
 		"Module.ShooterSam.2.cpp.obj": [
 			"EnvQueryContext_Player.gen.cpp.obj",
@@ -31,7 +34,6 @@
 			"PlatformingGameMode.gen.cpp.obj",
 			"PlatformingPlayerController.gen.cpp.obj",
 			"ShooterAI.gen.cpp.obj",
-			"ShooterSam.init.gen.cpp.obj",
 			"ShooterSamCharacter.gen.cpp.obj",
 			"ShooterSamGameMode.gen.cpp.obj",
 			"ShooterSamPlayerController.gen.cpp.obj",
@@ -52,14 +54,18 @@
 			"HUDWidget.cpp.obj",
 			"ShooterSam.cpp.obj",
 			"ShooterSamCharacter.cpp.obj",
+			"ShooterSamGameMode.cpp.obj",
 			"ShooterSamPlayerController.cpp.obj",
 			"CombatAIController.cpp.obj",
 			"CombatEnemy.cpp.obj",
 			"CombatEnemySpawner.cpp.obj",
 			"CombatStateTreeUtility.cpp.obj",
+			"ShooterSam.init.gen.cpp.obj",
 			"PerModuleInline.gen.cpp.obj",
-			"ShooterAI.cpp.obj",
-			"ShooterSamGameMode.cpp.obj"
+			"BTService_PlayerLocation.cpp.obj",
+			"BTService_PlayerLocationIfSeen.cpp.obj",
+			"BTTask_ClearBlackboardValue.cpp.obj",
+			"ShooterAI.cpp.obj"
 		],
 		"Module.ShooterSam.3.cpp.obj": [
 			"EnvQueryContext_Player.cpp.obj",
