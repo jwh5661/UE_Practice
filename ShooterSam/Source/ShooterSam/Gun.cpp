@@ -41,6 +41,7 @@ void AGun::Tick(float DeltaTime)
 void AGun::PullTrigger()
 {
 	MuzzleFlashParticleSystem->Activate(true);
+	UGameplayStatics::PlaySoundAtLocation(GetWorld(), ShootSound, GetActorLocation());
 
 	if (OwnerController)
 	{
@@ -78,6 +79,9 @@ void AGun::PullTrigger()
 				this,
 				UDamageType::StaticClass()
 			);
+
+			UGameplayStatics::PlaySoundAtLocation(GetWorld(), ImpactSound, HitResult.ImpactPoint);
+
 		}
 	}
 }

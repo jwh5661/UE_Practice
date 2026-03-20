@@ -12,6 +12,8 @@
 #include "InputActionValue.h"
 #include "ShooterSam.h"
 #include "Gun.h"
+#include "ShooterSamPlayerController.h"
+#include "HUDWidget.h"
 
 AShooterSamCharacter::AShooterSamCharacter()
 {
@@ -82,6 +84,7 @@ void AShooterSamCharacter::BeginPlay()
 
 	OnTakeAnyDamage.AddDynamic(this, &AShooterSamCharacter::OnDamageTaken);
 	Health = MaxHealth;
+	UpdateHUD();
 
 	GetMesh()->HideBoneByName("weapon_r", EPhysBodyOp::PBO_None);
 
@@ -170,15 +173,29 @@ void AShooterSamCharacter::OnDamageTaken(AActor* DamagedActor, float Damage, con
 	if (IsAlive)
 	{
 		Health -= Damage;
+		UpdateHUD();
 
 		if (Health <= 0.0f)
 		{
 			IsAlive = false;
 			Health = 0.0f;
 			GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);
-
-			UE_LOG(LogTemp, Display, TEXT("Character died : %s"), *GetActorNameOrLabel());
+			DetachFromControllerPendingDestroy();
 		}
+	}
+}
+
+void AShooterSamCharacter::UpdateHUD()
+{
+	AShooterSamPlayerController* PlayerController = Cast<AShooterSamPlayerController>(
+		GetController());
+
+	if (PlayerController)
+	{
+		float NewPercent = Health / MaxHealth;
+		if (NewPercent < 0.0f)
+			NewPercent = 0.0f;
+		PlayerController->HUDWidget->SetHealthBarPercent(NewPercent);
 	}
 }
  

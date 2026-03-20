@@ -15,6 +15,7 @@ void EmptyLinkFunctionForGeneratedCodeGun() {}
 ENGINE_API UClass* Z_Construct_UClass_AActor();
 ENGINE_API UClass* Z_Construct_UClass_USceneComponent_NoRegister();
 ENGINE_API UClass* Z_Construct_UClass_USkeletalMeshComponent_NoRegister();
+ENGINE_API UClass* Z_Construct_UClass_USoundBase_NoRegister();
 NIAGARA_API UClass* Z_Construct_UClass_UNiagaraComponent_NoRegister();
 NIAGARA_API UClass* Z_Construct_UClass_UNiagaraSystem_NoRegister();
 SHOOTERSAM_API UClass* Z_Construct_UClass_AGun();
@@ -89,6 +90,14 @@ struct Z_Construct_UClass_AGun_Statics
 		{ "Category", "Gun" },
 		{ "ModuleRelativePath", "Gun.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_ShootSound_MetaData[] = {
+		{ "Category", "Gun" },
+		{ "ModuleRelativePath", "Gun.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_ImpactSound_MetaData[] = {
+		{ "Category", "Gun" },
+		{ "ModuleRelativePath", "Gun.h" },
+	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_SceneComp;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_SkeletalMeshComp;
@@ -96,6 +105,8 @@ struct Z_Construct_UClass_AGun_Statics
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_ImpactParticleSystem;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_MaxRange;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_BulletDamage;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_ShootSound;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_ImpactSound;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
@@ -109,6 +120,8 @@ const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AGun_Statics::
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AGun_Statics::NewProp_ImpactParticleSystem = { "ImpactParticleSystem", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AGun, ImpactParticleSystem), Z_Construct_UClass_UNiagaraSystem_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ImpactParticleSystem_MetaData), NewProp_ImpactParticleSystem_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AGun_Statics::NewProp_MaxRange = { "MaxRange", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AGun, MaxRange), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MaxRange_MetaData), NewProp_MaxRange_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_AGun_Statics::NewProp_BulletDamage = { "BulletDamage", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AGun, BulletDamage), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_BulletDamage_MetaData), NewProp_BulletDamage_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AGun_Statics::NewProp_ShootSound = { "ShootSound", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AGun, ShootSound), Z_Construct_UClass_USoundBase_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ShootSound_MetaData), NewProp_ShootSound_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AGun_Statics::NewProp_ImpactSound = { "ImpactSound", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AGun, ImpactSound), Z_Construct_UClass_USoundBase_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_ImpactSound_MetaData), NewProp_ImpactSound_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AGun_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGun_Statics::NewProp_SceneComp,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGun_Statics::NewProp_SkeletalMeshComp,
@@ -116,6 +129,8 @@ const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AGun_Stat
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGun_Statics::NewProp_ImpactParticleSystem,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGun_Statics::NewProp_MaxRange,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGun_Statics::NewProp_BulletDamage,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGun_Statics::NewProp_ShootSound,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AGun_Statics::NewProp_ImpactSound,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_AGun_Statics::PropPointers) < 2048);
 UObject* (*const Z_Construct_UClass_AGun_Statics::DependentSingletons[])() = {
@@ -154,10 +169,10 @@ AGun::~AGun() {}
 struct Z_CompiledInDeferFile_FID_UnrealProjects_UE_Practice_ShooterSam_Source_ShooterSam_Gun_h__Script_ShooterSam_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AGun, AGun::StaticClass, TEXT("AGun"), &Z_Registration_Info_UClass_AGun, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AGun), 2417426871U) },
+		{ Z_Construct_UClass_AGun, AGun::StaticClass, TEXT("AGun"), &Z_Registration_Info_UClass_AGun, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AGun), 2503102782U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_UnrealProjects_UE_Practice_ShooterSam_Source_ShooterSam_Gun_h__Script_ShooterSam_3305249362(TEXT("/Script/ShooterSam"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_UnrealProjects_UE_Practice_ShooterSam_Source_ShooterSam_Gun_h__Script_ShooterSam_3815675920(TEXT("/Script/ShooterSam"),
 	Z_CompiledInDeferFile_FID_UnrealProjects_UE_Practice_ShooterSam_Source_ShooterSam_Gun_h__Script_ShooterSam_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_UnrealProjects_UE_Practice_ShooterSam_Source_ShooterSam_Gun_h__Script_ShooterSam_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
