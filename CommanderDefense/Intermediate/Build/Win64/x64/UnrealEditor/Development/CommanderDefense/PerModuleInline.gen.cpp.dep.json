@@ -1,0 +1,14 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "c:\\unrealprojects\\ue_practice\\commanderdefense\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\commanderdefense\\permoduleinline.gen.cpp",
+        "ProvidedModule": "",
+        "PCH": "c:\\unrealprojects\\ue_practice\\commanderdefense\\intermediate\\build\\win64\\x64\\commanderdefenseeditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.valexpapi.cpp20.h.pch",
+        "Includes": [
+            "c:\\unrealprojects\\ue_practice\\commanderdefense\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\commanderdefense\\definitions.commanderdefense.h",
+            "c:\\program files\\epic games\\ue_5.7\\engine\\source\\runtime\\core\\public\\hal\\permoduleinline.inl"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}
