@@ -28,6 +28,25 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Camera")
 	class UCameraComponent* CameraComp;
 
+	UPROPERTY(EditAnywhere, Category = "Camera Settings")
+	float ZoomSpeed = 200.0f;
+
+	// 제일 가깝게 확대할 때의 셀카봉 길이
+	UPROPERTY(EditAnywhere, Category = "Camera Settings")
+	float MinZoom = 500.0f;
+
+	// 제일 멀리 축소할 때의 셀카봉 길이
+	UPROPERTY(EditAnywhere, Category = "Camera Settings")
+	float MaxZoom = 4000.0f; 
+
+	// 화면 가장자리 몇 픽셀부터 반응할 것인가? ( 여백 )
+	UPROPERTY(EditAnywhere, Category = "Camera Settings")
+	float EdgeScrollZone = 30.0f;
+
+	// 엣지 스크롤 속도
+	UPROPERTY(EditAnywhere, Category = "Camera Settings")
+	float EdgeScrollSpeed = 1500.0f;
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
