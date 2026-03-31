@@ -113,6 +113,45 @@ void ACommanderCameraPawn::Tick(float DeltaTime)
 		}
 	}
 
+	// 우클릭 드래그 로직
+
+	// 1. 마우스가 화면 안에 있을 때만 작동
+	if (PC->GetMousePosition(MouseX, MouseY))
+	{
+		// 2. 우클릭이 눌려있는가?
+		if (PC->IsInputKeyDown(EKeys::RightMouseButton))
+		{
+			// 3. 방금 막 클릭을 시작했다면 초기화
+			if (!bIsPanning)
+			{
+				bIsPanning = true;
+				LastMousePosition = FVector2D(MouseX, MouseY); // 현재 위치를 시작점으로 저장
+			}
+			// 4. 이미 클릭해서 드래그 중이라면 이동
+			else
+			{
+				// 현재 위치 - 이전 위치 = 마우스가 이동한 변화량( Delta )
+				float DeltaX = MouseX - LastMousePosition.X;
+				float DeltaY = MouseY - LastMousePosition.Y;
+
+				// 핵심 : 좌표계 크로스 매핑 & 반대 방향( - ) 적용
+				// 마우스 Y축 이동( 위아래 ) -> 카메라 X축( 앞뒤 ) 조절
+				// 마우스 X축 이동( 좌우 ) -> 카메라 Y축( 좌우 ) 조절
+				FVector PanMoveInput(DeltaY, -DeltaX, 0.0f);
+
+				// 카메라 이동
+				AddActorWorldOffset(PanMoveInput * PanSpeed * DeltaTime);
+
+				// 다음 프레임 계산을 위해 현재 위치를 갱신
+				LastMousePosition = FVector2D(MouseX, MouseY);
+			}
+		}
+		else
+		{
+			bIsPanning = false;
+		}
+	}
+
 	// 줌인/줌아웃 로직
 
 	if (PC)
