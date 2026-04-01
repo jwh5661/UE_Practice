@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+ï»¿// Fill out your copyright notice in the Description page of Project Settings.
 
 
 #include "CommanderCameraPawn.h"
@@ -9,25 +9,25 @@
 // Sets default values
 ACommanderCameraPawn::ACommanderCameraPawn()
 {
- 	// Ä«¸Ş¶ó ÀÌµ¿ ·ÎÁ÷¿¡ ÇÊ¿äÇÔ
+ 	// ì¹´ë©”ë¼ ì´ë™ ë¡œì§ì— í•„ìš”í•¨
 	PrimaryActorTick.bCanEverTick = true;
 
-	// 1. °¡Àå ¹Ø¹ÙÅÁÀÌ µÇ´Â ·çÆ® ÄÄÆ÷³ÍÆ® »ı¼º
+	// 1. ê°€ì¥ ë°‘ë°”íƒ•ì´ ë˜ëŠ” ë£¨íŠ¸ ì»´í¬ë„ŒíŠ¸ ìƒì„±
 	RootComponent = CreateDefaultSubobject<USceneComponent>(TEXT("RootComponent"));
 
-	// 2. ¼¿Ä«ºÀ »ı¼º ¹× ·çÆ®¿¡ ºÎÂø
+	// 2. ì…€ì¹´ë´‰ ìƒì„± ë° ë£¨íŠ¸ì— ë¶€ì°©
 	SpringArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("SprintArm"));
 	SpringArm->SetupAttachment(RootComponent);
 
-	// RTS Å¾´Ù¿î ½ÃÁ¡À» À§ÇÑ ¼¿Ä«ºÀ ¼¼ÆÃ
-	SpringArm->TargetArmLength = 2000.0f; // Ä«¸Ş¶ó¸¦ 20¹ÌÅÍ À§·Î ¶ç¿ò
-	SpringArm->SetRelativeRotation(FRotator(-60.0f, 0.0f, 0.0f)); // ¾Æ·¡·Î 60µµ ²ª¾î ³»¸²
-	SpringArm->bDoCollisionTest = false; // ÁöÇüÁö¹°¿¡ ºÎµúÇôµµ Ä«¸Ş¶ó°¡ ÁÜÀÎµÇÁö ¾Êµµ·Ï ( RTS ÇÊ¼ö¿ä¼ÒÀÓ )
+	// RTS íƒ‘ë‹¤ìš´ ì‹œì ì„ ìœ„í•œ ì…€ì¹´ë´‰ ì„¸íŒ…
+	SpringArm->TargetArmLength = 2000.0f; // ì¹´ë©”ë¼ë¥¼ 20ë¯¸í„° ìœ„ë¡œ ë„ì›€
+	SpringArm->SetRelativeRotation(FRotator(-60.0f, 0.0f, 0.0f)); // ì•„ë˜ë¡œ 60ë„ êº¾ì–´ ë‚´ë¦¼
+	SpringArm->bDoCollisionTest = false; // ì§€í˜•ì§€ë¬¼ì— ë¶€ë”ªí˜€ë„ ì¹´ë©”ë¼ê°€ ì¤Œì¸ë˜ì§€ ì•Šë„ë¡ ( RTS í•„ìˆ˜ìš”ì†Œì„ )
 
-	// 3.Ä«¸Ş¶ó »ı¼º ¹× ¼¿Ä«ºÀ ³¡¿¡ ¸Å´Ş±â
+	// 3.ì¹´ë©”ë¼ ìƒì„± ë° ì…€ì¹´ë´‰ ëì— ë§¤ë‹¬ê¸°
 	CameraComp = CreateDefaultSubobject<UCameraComponent>(TEXT("CameraComp"));
-	// ¿©±â¼­ µÎ ¹øÂ° ÀÎÀÚ ¾È¾²¸é ¼¿Ä«ºÀÀ» Áã°í ÀÖ´Â ¼ÕÀâÀÌ¿¡ Ä«¸Ş¶ó¸¦ ´Ş°Ô µÊ
-	// µÎ ¹øÂ° ÀÎÀÚ°¡ ÀÖ¾î¾ß ¼¿Ä«ºÀÀÇ ²ôÆ®¸Ó¸®¿¡ ´Ş ¼ö ÀÖÀ½
+	// ì—¬ê¸°ì„œ ë‘ ë²ˆì§¸ ì¸ì ì•ˆì“°ë©´ ì…€ì¹´ë´‰ì„ ì¥ê³  ìˆëŠ” ì†ì¡ì´ì— ì¹´ë©”ë¼ë¥¼ ë‹¬ê²Œ ë¨
+	// ë‘ ë²ˆì§¸ ì¸ìê°€ ìˆì–´ì•¼ ì…€ì¹´ë´‰ì˜ ë„íŠ¸ë¨¸ë¦¬ì— ë‹¬ ìˆ˜ ìˆìŒ
 	CameraComp->SetupAttachment(SpringArm, USpringArmComponent::SocketName);
 }
 
@@ -43,41 +43,41 @@ void ACommanderCameraPawn::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	// WASD ÀÌµ¿ ·ÎÁ÷
+	// WASD ì´ë™ ë¡œì§
 
-	// Ä«¸Ş¶óÀÇ ÀÌµ¿ ¹æÇâÀ» ´ãÀ» ºó º¤ÅÍ
+	// ì¹´ë©”ë¼ì˜ ì´ë™ ë°©í–¥ì„ ë‹´ì„ ë¹ˆ ë²¡í„°
 	FVector MoveInput = FVector::ZeroVector;
 
-	// ³» Ä«¸Ş¶ó¿¡ ºùÀÇÇÑ ÇÃ·¹ÀÌ¾î ÄÁÆ®·Ñ·¯( ³ú )¸¦ °¡Á®¿Â´Ù
+	// ë‚´ ì¹´ë©”ë¼ì— ë¹™ì˜í•œ í”Œë ˆì´ì–´ ì»¨íŠ¸ë¡¤ëŸ¬( ë‡Œ )ë¥¼ ê°€ì ¸ì˜¨ë‹¤
 	APlayerController* PC = Cast<APlayerController>(GetController());
 
 	if (PC)
 	{
-		// ¾ğ¸®¾ó ±âº» Å° °Ë»ç ( Á÷°üÀûÀ¸·Î ÇÒ ¶§ )
-		if (PC->IsInputKeyDown(EKeys::W)) MoveInput.X += 1.0f; // ¾ÕÀ¸·Î ( XÃà )
-		if (PC->IsInputKeyDown(EKeys::S)) MoveInput.X -= 1.0f; // µÚ·Î ( XÃà )
-		if (PC->IsInputKeyDown(EKeys::A)) MoveInput.Y -= 1.0f; // ¿ŞÂÊÀ¸·Î ( YÃà )
-		if (PC->IsInputKeyDown(EKeys::D)) MoveInput.Y += 1.0f; // ¿À¸¥ÂÊÀ¸·Î ( YÃà )
+		// ì–¸ë¦¬ì–¼ ê¸°ë³¸ í‚¤ ê²€ì‚¬ ( ì§ê´€ì ìœ¼ë¡œ í•  ë•Œ )
+		if (PC->IsInputKeyDown(EKeys::W)) MoveInput.X += 1.0f; // ì•ìœ¼ë¡œ ( Xì¶• )
+		if (PC->IsInputKeyDown(EKeys::S)) MoveInput.X -= 1.0f; // ë’¤ë¡œ ( Xì¶• )
+		if (PC->IsInputKeyDown(EKeys::A)) MoveInput.Y -= 1.0f; // ì™¼ìª½ìœ¼ë¡œ ( Yì¶• )
+		if (PC->IsInputKeyDown(EKeys::D)) MoveInput.Y += 1.0f; // ì˜¤ë¥¸ìª½ìœ¼ë¡œ ( Yì¶• )
 	}
 
 	if (!MoveInput.IsNearlyZero())
 	{
-		MoveInput.Normalize(); // ´ë°¢¼±À¸·Î °¥ ¶§ ´õ »¡¶óÁö´Â °É ¸·¾ÆÁÖ´Â ÄÚµå
+		MoveInput.Normalize(); // ëŒ€ê°ì„ ìœ¼ë¡œ ê°ˆ ë•Œ ë” ë¹¨ë¼ì§€ëŠ” ê±¸ ë§‰ì•„ì£¼ëŠ” ì½”ë“œ
 
-		float MoveSpeed = 2000.0f; // Ä«¸Ş¶ó ÀÌµ¿ ¼Óµµ
+		float MoveSpeed = 2000.0f; // ì¹´ë©”ë¼ ì´ë™ ì†ë„
 
-		// ÇöÀç À§Ä¡¿¡¼­ ¹æÇâ * ¼Óµµ * ½Ã°£¸¸Å­ ´õÇØ¼­ ÀÌµ¿½ÃÅ²´Ù
+		// í˜„ì¬ ìœ„ì¹˜ì—ì„œ ë°©í–¥ * ì†ë„ * ì‹œê°„ë§Œí¼ ë”í•´ì„œ ì´ë™ì‹œí‚¨ë‹¤
 		AddActorWorldOffset(MoveInput * MoveSpeed * DeltaTime);
 	}
 
-	// ¿§Áö ½ºÅ©·Ñ¸µ ·ÎÁ÷
+	// ì—£ì§€ ìŠ¤í¬ë¡¤ë§ ë¡œì§
 
 	float MouseX, MouseY;
 
-	// 1. ¸¶¿ì½º ÇöÀç ÁÂÇ¥¸¦ °¡Á®¿È ( ¸¶¿ì½º°¡ È­¸é ¹ÛÀÌ¸é false¸¦ ¹İÈ¯ÇÏ¹Ç·Î Ã¼Å© ÇÊ¼ö )
+	// 1. ë§ˆìš°ìŠ¤ í˜„ì¬ ì¢Œí‘œë¥¼ ê°€ì ¸ì˜´ ( ë§ˆìš°ìŠ¤ê°€ í™”ë©´ ë°–ì´ë©´ falseë¥¼ ë°˜í™˜í•˜ë¯€ë¡œ ì²´í¬ í•„ìˆ˜ )
 	if (PC->GetMousePosition(MouseX, MouseY))
 	{
-		// 2. ÇöÀç ºäÆ÷Æ®( È­¸é ) Å©±â¸¦ °¡Á®¿È
+		// 2. í˜„ì¬ ë·°í¬íŠ¸( í™”ë©´ ) í¬ê¸°ë¥¼ ê°€ì ¸ì˜´
 		FVector2D ViewportSize;
 		if (GEngine && GEngine->GameViewport)
 		{
@@ -86,22 +86,22 @@ void ACommanderCameraPawn::Tick(float DeltaTime)
 
 		FVector EdgeMoveInput = FVector::ZeroVector;
 
-		// 3. ¸¶¿ì½º°¡ XÃà( ÁÂ/¿ì ) °¡ÀåÀÚ¸®¿¡ ÀÖ´ÂÁö °Ë»ç
-		if (MouseX <= EdgeScrollZone) // ¸¶¿ì½º°¡ ¿ŞÂÊ ³¡¿¡ ´êÀ½
+		// 3. ë§ˆìš°ìŠ¤ê°€ Xì¶•( ì¢Œ/ìš° ) ê°€ì¥ìë¦¬ì— ìˆëŠ”ì§€ ê²€ì‚¬
+		if (MouseX <= EdgeScrollZone) // ë§ˆìš°ìŠ¤ê°€ ì™¼ìª½ ëì— ë‹¿ìŒ
 		{
 			EdgeMoveInput.Y -= 1.0f;
 		}
-		else if (MouseX >= ViewportSize.X - EdgeScrollZone) // ¿À¸¥ÂÊ ³¡
+		else if (MouseX >= ViewportSize.X - EdgeScrollZone) // ì˜¤ë¥¸ìª½ ë
 		{
 			EdgeMoveInput.Y += 1.0f;
 		}
 
-		// 4. ¸¶¿ì½º°¡ YÃà( »ó/ÇÏ ) °¡ÀåÀÚ¸®¿¡ ÀÖ´ÂÁö °Ë»ç ( ¾ğ¸®¾ó È­¸é ÁÂÇ¥´Â ¸Ç À§°¡ 0, ¾Æ·¡°¡ Max )
-		if (MouseY <= EdgeScrollZone) // È­¸é À§ÂÊ ³¡
+		// 4. ë§ˆìš°ìŠ¤ê°€ Yì¶•( ìƒ/í•˜ ) ê°€ì¥ìë¦¬ì— ìˆëŠ”ì§€ ê²€ì‚¬ ( ì–¸ë¦¬ì–¼ í™”ë©´ ì¢Œí‘œëŠ” ë§¨ ìœ„ê°€ 0, ì•„ë˜ê°€ Max )
+		if (MouseY <= EdgeScrollZone) // í™”ë©´ ìœ„ìª½ ë
 		{
 			EdgeMoveInput.X += 1.0f;
 		}
-		else if (MouseY >= ViewportSize.Y - EdgeScrollZone) // È­¸é ¾Æ·¡ÂÊ ³¡
+		else if (MouseY >= ViewportSize.Y - EdgeScrollZone) // í™”ë©´ ì•„ë˜ìª½ ë
 		{
 			EdgeMoveInput.X -= 1.0f;
 		}
@@ -113,36 +113,36 @@ void ACommanderCameraPawn::Tick(float DeltaTime)
 		}
 	}
 
-	// ¿ìÅ¬¸¯ µå·¡±× ·ÎÁ÷
+	// ìš°í´ë¦­ ë“œë˜ê·¸ ë¡œì§
 
-	// 1. ¸¶¿ì½º°¡ È­¸é ¾È¿¡ ÀÖÀ» ¶§¸¸ ÀÛµ¿
+	// 1. ë§ˆìš°ìŠ¤ê°€ í™”ë©´ ì•ˆì— ìˆì„ ë•Œë§Œ ì‘ë™
 	if (PC->GetMousePosition(MouseX, MouseY))
 	{
-		// 2. ¿ìÅ¬¸¯ÀÌ ´­·ÁÀÖ´Â°¡?
+		// 2. ìš°í´ë¦­ì´ ëˆŒë ¤ìˆëŠ”ê°€?
 		if (PC->IsInputKeyDown(EKeys::RightMouseButton))
 		{
-			// 3. ¹æ±İ ¸· Å¬¸¯À» ½ÃÀÛÇß´Ù¸é ÃÊ±âÈ­
+			// 3. ë°©ê¸ˆ ë§‰ í´ë¦­ì„ ì‹œì‘í–ˆë‹¤ë©´ ì´ˆê¸°í™”
 			if (!bIsPanning)
 			{
 				bIsPanning = true;
-				LastMousePosition = FVector2D(MouseX, MouseY); // ÇöÀç À§Ä¡¸¦ ½ÃÀÛÁ¡À¸·Î ÀúÀå
+				LastMousePosition = FVector2D(MouseX, MouseY); // í˜„ì¬ ìœ„ì¹˜ë¥¼ ì‹œì‘ì ìœ¼ë¡œ ì €ì¥
 			}
-			// 4. ÀÌ¹Ì Å¬¸¯ÇØ¼­ µå·¡±× ÁßÀÌ¶ó¸é ÀÌµ¿
+			// 4. ì´ë¯¸ í´ë¦­í•´ì„œ ë“œë˜ê·¸ ì¤‘ì´ë¼ë©´ ì´ë™
 			else
 			{
-				// ÇöÀç À§Ä¡ - ÀÌÀü À§Ä¡ = ¸¶¿ì½º°¡ ÀÌµ¿ÇÑ º¯È­·®( Delta )
+				// í˜„ì¬ ìœ„ì¹˜ - ì´ì „ ìœ„ì¹˜ = ë§ˆìš°ìŠ¤ê°€ ì´ë™í•œ ë³€í™”ëŸ‰( Delta )
 				float DeltaX = MouseX - LastMousePosition.X;
 				float DeltaY = MouseY - LastMousePosition.Y;
 
-				// ÇÙ½É : ÁÂÇ¥°è Å©·Î½º ¸ÅÇÎ & ¹İ´ë ¹æÇâ( - ) Àû¿ë
-				// ¸¶¿ì½º YÃà ÀÌµ¿( À§¾Æ·¡ ) -> Ä«¸Ş¶ó XÃà( ¾ÕµÚ ) Á¶Àı
-				// ¸¶¿ì½º XÃà ÀÌµ¿( ÁÂ¿ì ) -> Ä«¸Ş¶ó YÃà( ÁÂ¿ì ) Á¶Àı
+				// í•µì‹¬ : ì¢Œí‘œê³„ í¬ë¡œìŠ¤ ë§¤í•‘ & ë°˜ëŒ€ ë°©í–¥( - ) ì ìš©
+				// ë§ˆìš°ìŠ¤ Yì¶• ì´ë™( ìœ„ì•„ë˜ ) -> ì¹´ë©”ë¼ Xì¶•( ì•ë’¤ ) ì¡°ì ˆ
+				// ë§ˆìš°ìŠ¤ Xì¶• ì´ë™( ì¢Œìš° ) -> ì¹´ë©”ë¼ Yì¶•( ì¢Œìš° ) ì¡°ì ˆ
 				FVector PanMoveInput(DeltaY, -DeltaX, 0.0f);
 
-				// Ä«¸Ş¶ó ÀÌµ¿
+				// ì¹´ë©”ë¼ ì´ë™
 				AddActorWorldOffset(PanMoveInput * PanSpeed * DeltaTime);
 
-				// ´ÙÀ½ ÇÁ·¹ÀÓ °è»êÀ» À§ÇØ ÇöÀç À§Ä¡¸¦ °»½Å
+				// ë‹¤ìŒ í”„ë ˆì„ ê³„ì‚°ì„ ìœ„í•´ í˜„ì¬ ìœ„ì¹˜ë¥¼ ê°±ì‹ 
 				LastMousePosition = FVector2D(MouseX, MouseY);
 			}
 		}
@@ -152,20 +152,51 @@ void ACommanderCameraPawn::Tick(float DeltaTime)
 		}
 	}
 
-	// ÁÜÀÎ/ÁÜ¾Æ¿ô ·ÎÁ÷
+	// ì¤Œì¸/ì¤Œì•„ì›ƒ ë¡œì§
 
 	if (PC)
 	{
-		// EKeys::MouseWheelAxis´Â ÈÙÀ» À§·Î ±¼¸®¸é ¾ç¼ö( 1.0 ), ¾Æ·¡·Î ±¼¸®¸é À½¼ö( -1.0 )¸¦ ¹ñ¾î³¿
+		// EKeys::MouseWheelAxisëŠ” íœ ì„ ìœ„ë¡œ êµ´ë¦¬ë©´ ì–‘ìˆ˜( 1.0 ), ì•„ë˜ë¡œ êµ´ë¦¬ë©´ ìŒìˆ˜( -1.0 )ë¥¼ ë±‰ì–´ëƒ„
 		float WheelInput = PC->GetInputAnalogKeyState(EKeys::MouseWheelAxis);
 
-		if (FMath::Abs(WheelInput) > 0.0f) // ÈÙÀ» Á¶±İÀÌ¶óµµ ±¼·È´Ù¸é
+		if (FMath::Abs(WheelInput) > 0.0f) // íœ ì„ ì¡°ê¸ˆì´ë¼ë„ êµ´ë ¸ë‹¤ë©´
 		{
-			// ÈÙÀ» À§·Î( ¾ç¼ö ) ±¼¸®¸é °¡±î¿öÁ®¾ß ÇÏ¹Ç·Î ¼¿Ä«ºÀ ±æÀÌ¸¦ »©ÁØ´Ù
+			// íœ ì„ ìœ„ë¡œ( ì–‘ìˆ˜ ) êµ´ë¦¬ë©´ ê°€ê¹Œì›Œì ¸ì•¼ í•˜ë¯€ë¡œ ì…€ì¹´ë´‰ ê¸¸ì´ë¥¼ ë¹¼ì¤€ë‹¤
 			float TargetLength = SpringArm->TargetArmLength - (WheelInput * ZoomSpeed);
 
-			// FMath::Clamp: TargetLength°ªÀÌ MinZoomº¸´Ù ÀÛ¾ÆÁö°Å³ª MaxZoomº¸´Ù Ä¿Áö´Â °É ¹æ¾î
+			// FMath::Clamp: TargetLengthê°’ì´ MinZoomë³´ë‹¤ ì‘ì•„ì§€ê±°ë‚˜ MaxZoomë³´ë‹¤ ì»¤ì§€ëŠ” ê±¸ ë°©ì–´
 			SpringArm->TargetArmLength = FMath::Clamp(TargetLength, MinZoom, MaxZoom);
+		}
+	}
+
+	// ì¢Œí´ë¦­ ìœ ë‹› ì„ íƒ ( Raycasting ) ë¡œì§
+
+	// 1, ë°©ê¸ˆ ë§‰ ì¢Œí´ë¦­ì„ 'ëˆŒë €ë‹¤ ë—€' ì°°ë‚˜ì˜ ìˆœê°„ì¸ê°€? ( ë‹¨ë°œì„± ì‹¤í–‰ )
+	if (PC->WasInputKeyJustPressed(EKeys::LeftMouseButton))
+	{
+		// 2. ë ˆì´ì €ê°€ ë¶€ë”ªíŒ ê²°ê³¼ë¥¼ ë‹´ì„ ë¹ˆ ë°”êµ¬ë‹ˆ( êµ¬ì¡°ì²´ ) ì¤€ë¹„
+		FHitResult HitResult;
+
+		// 3. ë§ˆìš°ìŠ¤ ì»¤ì„œ ì•„ë˜ë¡œ ë ˆì´ì € ë°œì‚¬ ( ê°€ì‹œì„± ì±„ë„ ê¸°ì¤€ )
+		// ECC_Visibility : í™”ë©´ì— ë³´ì´ëŠ”( ê°€ë ¤ì§€ì§€ ì•Šì€ ) ë¬¼ì²´ì— ë¶€ë”ªíˆê²Œ í•¨
+		bool bHit = PC->GetHitResultUnderCursor(ECC_Visibility, false, HitResult);
+
+		// 4. ë ˆì´ì €ê°€ ë­”ê°€ì— ë§ì•˜ê³ , ê·¸ ë§ì€ ë¬¼ì²´( Actor )ê°€ ì‹¤ì œë¡œ ì¡´ì¬í•œë‹¤ë©´?
+		if (bHit && HitResult.GetActor())
+		{
+			// 5. ë§ì€ ì•¡í„°ì˜ ì´ë¦„ì„ ë¬¸ìì—´ë¡œ ê°€ì ¸ì˜¨ë‹¤.
+			FString HitActorName = HitResult.GetActor()->GetName();
+
+			// 6. í™”ë©´ ì™¼ìª½ ìœ„ì— ë¹¨ê°„ìƒ‰ ë””ë²„ê·¸ ë©”ì‹œì§€ë¡œ ë„ì›Œì£¼ê¸°
+			if (GEngine)
+			{
+				GEngine->AddOnScreenDebugMessage(
+					-1,
+					3.0f, // 3ì´ˆ ë™ì•ˆ í‘œì‹œ
+					FColor::Red,
+					FString::Printf(TEXT("ì„ íƒëœ ìœ ë‹› : %s"), *HitActorName)
+				);
+			}
 		}
 	}
 }
