@@ -5,6 +5,9 @@
 
 #include "GameFramework/SpringArmComponent.h"
 #include "Camera/CameraComponent.h"
+#include "Blueprint/AIBlueprintHelperLibrary.h"
+#include "Kismet/GameplayStatics.h"
+#include "GameFramework/Character.h"
 
 // Sets default values
 ACommanderCameraPawn::ACommanderCameraPawn()
@@ -199,6 +202,65 @@ void ACommanderCameraPawn::Tick(float DeltaTime)
 			}
 		}
 	}
+
+	// 우클릭 이동 명령 로직
+
+	if (PC->GetMousePosition(MouseX, MouseY))
+	{
+		FVector2D CurrentMousePos(MouseX, MouseY);
+
+		if (PC->WasInputKeyJustPressed(EKeys::RightMouseButton))
+		{
+			RightClickDownPosition = CurrentMousePos;
+		}
+
+		if (PC->WasInputKeyJustReleased(EKeys::RightMouseButton))
+		{
+			float DragDistance = FVector2D::Distance(RightClickDownPosition, CurrentMousePos);
+
+			if (DragDistance < 30.0f)
+			{
+				FHitResult HitResult;
+				if (PC->GetHitResultUnderCursor(ECC_Visibility, false, HitResult))
+				{
+					AActor* DummyUnit = UGameplayStatics::GetActorOfClass(GetWorld(), ACharacter::StaticClass());
+
+					ACharacter* DummyCharacter = Cast<ACharacter>(DummyUnit);
+
+					if (DummyCharacter && DummyCharacter->GetController())
+					{
+						UAIBlueprintHelperLibrary::SimpleMoveToLocation(DummyCharacter->GetController(), HitResult.Location);
+						DrawDebugSphere(GetWorld(), HitResult.Location, 50.0f, 16, FColor::Green, false, 3.0f);
+					}
+				}
+			}
+		}
+	}
+
+	// 아래는 우클릭 누르지마자 유닛 움직임.
+	// 이렇게 하면 맵 끌다가 유닛 움직여짐
+	// 
+	// 1. 방금 막 우클릭을 눌렀다면? ( 단발성 실행 )
+	//if (PC->WasInputKeyJustPressed(EKeys::RightMouseButton))
+	//{
+	//	FHitResult HitResult;
+	//
+	//	// 2. 마우스 커서 아래로 레이저 발사 ( 땅을 클릭했는지 확인 )
+	//	bool bHit = PC->GetHitResultUnderCursor(ECC_Visibility, false, HitResult);
+	//
+	//	if (bHit)
+	//	{
+	//		// 3. 레이저가 부딪힌 땅의 3D 좌표를 가져옴
+	//		FVector Destination = HitResult.Location;
+	//
+	//		// 4. ( 임시 ) 현재 컨트롤러가 조종 중인 캐릭터를 가져와서 해당 지점으로 이동
+	//		// *실제 RTS에서는 선택된 유닛들에게 명령을 내려야 하지만, 지금은 테스트
+	//		UAIBlueprintHelperLibrary::SimpleMoveToLocation(PC, Destination);
+	//
+	//		// 5. 클릭한 곳에 시각적 피드백 그려주기
+	//		DrawDebugSphere(GetWorld(), Destination, 50.0f, 16, FColor::Green, false, 3.0f);
+	//	}
+	//}
 }
 
 // Called to bind functionality to input

@@ -57,6 +57,8 @@ protected:
 	// 직전 프레임의 마우스 위치 저장
 	FVector2D LastMousePosition;
 
+	FVector2D RightClickDownPosition;
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
