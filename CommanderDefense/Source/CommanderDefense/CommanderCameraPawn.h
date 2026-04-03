@@ -19,6 +19,10 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+	void OnLeftMousePressed();
+
+	void OnLeftMouseRelesed();
+
 protected:
 	// ÁöÈÖ°üÀÇ ´«À» ÁöÅÊÇÒ ¼¿Ä«ºÀ
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Camera")

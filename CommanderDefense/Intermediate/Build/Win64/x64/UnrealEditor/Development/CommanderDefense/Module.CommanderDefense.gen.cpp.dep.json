@@ -9,7 +9,18 @@
             "c:\\unrealprojects\\ue_practice\\commanderdefense\\intermediate\\build\\win64\\unrealeditor\\inc\\commanderdefense\\uht\\commandercamerapawn.gen.cpp",
             "c:\\unrealprojects\\ue_practice\\commanderdefense\\source\\commanderdefense\\commandercamerapawn.h",
             "c:\\unrealprojects\\ue_practice\\commanderdefense\\intermediate\\build\\win64\\unrealeditor\\inc\\commanderdefense\\uht\\commandercamerapawn.generated.h",
-            "c:\\unrealprojects\\ue_practice\\commanderdefense\\intermediate\\build\\win64\\unrealeditor\\inc\\commanderdefense\\uht\\commanderdefense.init.gen.cpp"
+            "c:\\unrealprojects\\ue_practice\\commanderdefense\\intermediate\\build\\win64\\unrealeditor\\inc\\commanderdefense\\uht\\commanderdefense.init.gen.cpp",
+            "c:\\unrealprojects\\ue_practice\\commanderdefense\\intermediate\\build\\win64\\unrealeditor\\inc\\commanderdefense\\uht\\myrtshud.gen.cpp",
+            "c:\\unrealprojects\\ue_practice\\commanderdefense\\source\\commanderdefense\\myrtshud.h",
+            "c:\\program files\\epic games\\ue_5.7\\engine\\source\\runtime\\engine\\classes\\gameframework\\hud.h",
+            "c:\\program files\\epic games\\ue_5.7\\engine\\source\\runtime\\engine\\classes\\gameframework\\hudhitbox.h",
+            "c:\\program files\\epic games\\ue_5.7\\engine\\source\\runtime\\engine\\classes\\gameframework\\debugtextinfo.h",
+            "c:\\program files\\epic games\\ue_5.7\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\debugtextinfo.generated.h",
+            "c:\\program files\\epic games\\ue_5.7\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\hud.generated.h",
+            "c:\\unrealprojects\\ue_practice\\commanderdefense\\intermediate\\build\\win64\\unrealeditor\\inc\\commanderdefense\\uht\\myrtshud.generated.h",
+            "c:\\unrealprojects\\ue_practice\\commanderdefense\\intermediate\\build\\win64\\unrealeditor\\inc\\commanderdefense\\uht\\myrtsplayercontroller.gen.cpp",
+            "c:\\unrealprojects\\ue_practice\\commanderdefense\\source\\commanderdefense\\myrtsplayercontroller.h",
+            "c:\\unrealprojects\\ue_practice\\commanderdefense\\intermediate\\build\\win64\\unrealeditor\\inc\\commanderdefense\\uht\\myrtsplayercontroller.generated.h"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

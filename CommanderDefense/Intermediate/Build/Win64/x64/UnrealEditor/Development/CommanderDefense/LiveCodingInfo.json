@@ -3,7 +3,9 @@
 	{
 		"Module.CommanderDefense.gen.cpp.obj": [
 			"CommanderCameraPawn.gen.cpp.obj",
-			"CommanderDefense.init.gen.cpp.obj"
+			"CommanderDefense.init.gen.cpp.obj",
+			"MyRTSHUD.gen.cpp.obj",
+			"MyRTSPlayerController.gen.cpp.obj"
 		]
 	}
 }

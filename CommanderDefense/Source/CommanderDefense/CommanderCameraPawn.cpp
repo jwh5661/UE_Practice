@@ -8,6 +8,8 @@
 #include "Blueprint/AIBlueprintHelperLibrary.h"
 #include "Kismet/GameplayStatics.h"
 #include "GameFramework/Character.h"
+#include "MyRTSHUD.h"
+#include "MyRTSPlayerController.h"
 
 // Sets default values
 ACommanderCameraPawn::ACommanderCameraPawn()
@@ -39,6 +41,91 @@ void ACommanderCameraPawn::BeginPlay()
 {
 	Super::BeginPlay();
 	
+}
+
+// 좌클릭 눌렀을 때
+void ACommanderCameraPawn::OnLeftMousePressed()
+{
+	// 1. 내 영혼( Controller )을 찾는다
+	AMyRTSPlayerController* PC = Cast<AMyRTSPlayerController>(GetController());
+	if (PC)
+	{
+		// 2. 그 영혼이 보고 있는 HUD를 찾는다
+		AMyRTSHUD* MyHUD = Cast<AMyRTSHUD>(PC->GetHUD());
+		if(MyHUD)
+		{ 
+			// 3. HUD한테 사각형 그리라고 명령
+			MyHUD->bIsDrawing = true;
+
+			float MouseX, MouseY;
+			PC->GetMousePosition(MouseX, MouseY);
+			MyHUD->InitialPoint = FVector2D(MouseX, MouseY);
+		}
+	}
+}
+
+void ACommanderCameraPawn::OnLeftMouseRelesed()
+{
+	AMyRTSPlayerController* PC = Cast<AMyRTSPlayerController>(GetController());
+
+	if (PC)
+	{
+		AMyRTSHUD* MyHUD = Cast<AMyRTSHUD>(PC->GetHUD());
+
+		if (MyHUD)
+		{
+			MyHUD->bIsDrawing = false;
+
+			float MouseX, MouseY;
+			PC->GetMousePosition(MouseX, MouseY);
+			FVector2D EndPoint(MouseX, MouseY);
+
+			float DragDistance = FVector2D::Distance(MyHUD->InitialPoint, EndPoint);
+
+			if (DragDistance < 15.0f)
+			{
+				// 2. 레이저가 부딪힌 결과를 담을 빈 바구니( 구조체 ) 준비
+				FHitResult HitResult;
+
+				// 3. 마우스 커서 아래로 레이저 발사 ( 가시성 채널 기준 )
+				// ECC_Visibility : 화면에 보이는( 가려지지 않은 ) 물체에 부딪히게 함
+				bool bHit = PC->GetHitResultUnderCursor(ECC_Visibility, false, HitResult);
+
+				// 4. 레이저가 뭔가에 맞았고, 그 맞은 물체( Actor )가 실제로 존재한다면?
+				if (bHit && HitResult.GetActor())
+				{
+					ACharacter* ClickedUnit = Cast<ACharacter>(HitResult.GetActor());
+
+					if (ClickedUnit)
+					{
+						// 5. 맞은 액터의 이름을 문자열로 가져온다.
+						FString HitActorName = HitResult.GetActor()->GetName();
+
+						// 6. 화면 왼쪽 위에 빨간색 디버그 메시지로 띄워주기
+						if (GEngine)
+						{
+							GEngine->AddOnScreenDebugMessage(
+								-1,
+								3.0f, // 3초 동안 표시
+								FColor::Cyan,
+								FString::Printf(TEXT("선택된 유닛 : %s"), *HitActorName)
+							);
+						}
+					}
+				}
+			}
+			else
+			{
+				MyHUD->bIsDrawing = false;
+
+				GEngine->AddOnScreenDebugMessage(
+					-1,
+					3.0f, // 3초 동안 표시
+					FColor::Red,
+					TEXT("다중 선택 (드래그)"));
+			}
+		}
+	}
 }
 
 // Called every frame
@@ -175,32 +262,42 @@ void ACommanderCameraPawn::Tick(float DeltaTime)
 	// 좌클릭 유닛 선택 ( Raycasting ) 로직
 
 	// 1, 방금 막 좌클릭을 '눌렀다 뗀' 찰나의 순간인가? ( 단발성 실행 )
+	//if (PC->WasInputKeyJustPressed(EKeys::LeftMouseButton))
+	//{
+	//	// 2. 레이저가 부딪힌 결과를 담을 빈 바구니( 구조체 ) 준비
+	//	FHitResult HitResult;
+	//
+	//	// 3. 마우스 커서 아래로 레이저 발사 ( 가시성 채널 기준 )
+	//	// ECC_Visibility : 화면에 보이는( 가려지지 않은 ) 물체에 부딪히게 함
+	//	bool bHit = PC->GetHitResultUnderCursor(ECC_Visibility, false, HitResult);
+	//
+	//	// 4. 레이저가 뭔가에 맞았고, 그 맞은 물체( Actor )가 실제로 존재한다면?
+	//	if (bHit && HitResult.GetActor())
+	//	{
+	//		// 5. 맞은 액터의 이름을 문자열로 가져온다.
+	//		FString HitActorName = HitResult.GetActor()->GetName();
+	//
+	//		// 6. 화면 왼쪽 위에 빨간색 디버그 메시지로 띄워주기
+	//		if (GEngine)
+	//		{
+	//			GEngine->AddOnScreenDebugMessage(
+	//				-1,
+	//				3.0f, // 3초 동안 표시
+	//				FColor::Red,
+	//				FString::Printf(TEXT("선택된 유닛 : %s"), *HitActorName)
+	//			);
+	//		}
+	//	}
+	//}
+
 	if (PC->WasInputKeyJustPressed(EKeys::LeftMouseButton))
 	{
-		// 2. 레이저가 부딪힌 결과를 담을 빈 바구니( 구조체 ) 준비
-		FHitResult HitResult;
+		OnLeftMousePressed();
+	}
 
-		// 3. 마우스 커서 아래로 레이저 발사 ( 가시성 채널 기준 )
-		// ECC_Visibility : 화면에 보이는( 가려지지 않은 ) 물체에 부딪히게 함
-		bool bHit = PC->GetHitResultUnderCursor(ECC_Visibility, false, HitResult);
-
-		// 4. 레이저가 뭔가에 맞았고, 그 맞은 물체( Actor )가 실제로 존재한다면?
-		if (bHit && HitResult.GetActor())
-		{
-			// 5. 맞은 액터의 이름을 문자열로 가져온다.
-			FString HitActorName = HitResult.GetActor()->GetName();
-
-			// 6. 화면 왼쪽 위에 빨간색 디버그 메시지로 띄워주기
-			if (GEngine)
-			{
-				GEngine->AddOnScreenDebugMessage(
-					-1,
-					3.0f, // 3초 동안 표시
-					FColor::Red,
-					FString::Printf(TEXT("선택된 유닛 : %s"), *HitActorName)
-				);
-			}
-		}
+	if (PC->WasInputKeyJustReleased(EKeys::LeftMouseButton))
+	{
+		OnLeftMouseRelesed();
 	}
 
 	// 우클릭 이동 명령 로직
@@ -261,6 +358,8 @@ void ACommanderCameraPawn::Tick(float DeltaTime)
 	//		DrawDebugSphere(GetWorld(), Destination, 50.0f, 16, FColor::Green, false, 3.0f);
 	//	}
 	//}
+
+
 }
 
 // Called to bind functionality to input
