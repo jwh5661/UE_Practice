@@ -21,5 +21,5 @@ public:
 	FVector2D InitialPoint; // 클릭 시작점
 	FVector2D CurrentPoint; // 현재 마우스 위치
 	bool bIsDrawing = false; // 드래그 중인지 체크
-	
+	bool bShouldSelect = false;
 };

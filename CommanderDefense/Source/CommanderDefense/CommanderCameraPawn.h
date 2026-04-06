@@ -55,6 +55,9 @@ protected:
 	UPROPERTY(EditAnywhere, Category = "Camera Settings")
 	float PanSpeed = 100.0f;
 
+	UPROPERTY()
+	TArray<class AMyRTSCharacter*> CurrentlySelectedUnit;
+
 	// 현재 드래그 중인지 상태 저장
 	bool bIsPanning = false;
 
@@ -70,4 +73,5 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+	void UpdateSelectedUnits(const TArray<AMyRTSCharacter*>& NewUnits);
 };

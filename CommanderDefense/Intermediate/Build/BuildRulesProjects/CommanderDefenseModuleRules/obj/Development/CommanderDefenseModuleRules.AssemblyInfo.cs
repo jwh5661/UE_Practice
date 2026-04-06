@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CommanderDefenseModuleRules")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Development")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3249461b3e5a14c1660c6b2ea898eeeec295cd19")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a870b79d987a8e32071116420637863a0c0dcf13")]
 [assembly: System.Reflection.AssemblyProductAttribute("CommanderDefenseModuleRules")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CommanderDefenseModuleRules")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

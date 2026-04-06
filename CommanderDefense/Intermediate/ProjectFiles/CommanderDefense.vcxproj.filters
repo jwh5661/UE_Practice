@@ -45,6 +45,12 @@
     <ClInclude Include="..\..\Source\CommanderDefense\CommanderDefense.h">
       <Filter>Source\CommanderDefense</Filter>
     </ClInclude>
+    <ClCompile Include="..\..\Source\CommanderDefense\MyRTSCharacter.cpp">
+      <Filter>Source\CommanderDefense</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\CommanderDefense\MyRTSCharacter.h">
+      <Filter>Source\CommanderDefense</Filter>
+    </ClInclude>
     <ClCompile Include="..\..\Source\CommanderDefense\MyRTSHUD.cpp">
       <Filter>Source\CommanderDefense</Filter>
     </ClCompile>

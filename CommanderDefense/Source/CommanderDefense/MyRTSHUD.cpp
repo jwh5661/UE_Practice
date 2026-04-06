@@ -5,6 +5,8 @@
 
 #include "MyRTSPlayerController.h"
 #include "GameFramework/Character.h"
+#include "MyRTSCharacter.h"
+#include "CommanderCameraPawn.h"
 
 void AMyRTSHUD::DrawHUD()
 {
@@ -26,15 +28,26 @@ void AMyRTSHUD::DrawHUD()
 		DrawRect(FLinearColor(0.0f, 1.0f, 0.0f, 0.2f),
 			InitialPoint.X, InitialPoint.Y,
 			CurrentPoint.X - InitialPoint.X, CurrentPoint.Y - InitialPoint.Y);
+	}
 
+	if (bShouldSelect)
+	{
+		bShouldSelect = false;
+
+		TArray<AMyRTSCharacter*> SelectedUnit;
 		// 3. 사각형 안의 유닛들 긁어오기
-		TArray<ACharacter*> SelectedActors;
-		GetActorsInSelectionRectangle<ACharacter>(InitialPoint, CurrentPoint, SelectedActors, false, false);
+		GetActorsInSelectionRectangle<AMyRTSCharacter>(InitialPoint, CurrentPoint, SelectedUnit, false, false);
+
+		ACommanderCameraPawn* CommanderCameraPawn = Cast<ACommanderCameraPawn>(GetOwningPawn());
+		if (CommanderCameraPawn)
+		{
+			CommanderCameraPawn->UpdateSelectedUnits(SelectedUnit);
+		}
 
 		// 4. ( 디버그 ) 몇 명이나 선택됐는지 화면에 출력
-		if (SelectedActors.Num() > 0)
+		if (SelectedUnit.Num() > 0)
 		{
-			FString Msg = FString::Printf(TEXT("선택된 유닛 수 : %d"), SelectedActors.Num());
+			FString Msg = FString::Printf(TEXT("선택된 유닛 수 : %d"), SelectedUnit.Num());
 			GEngine->AddOnScreenDebugMessage(1, 0.1f, FColor::Yellow, Msg);
 		}
 	}

@@ -10,6 +10,7 @@
 #include "GameFramework/Character.h"
 #include "MyRTSHUD.h"
 #include "MyRTSPlayerController.h"
+#include "MyRTSCharacter.h"
 
 // Sets default values
 ACommanderCameraPawn::ACommanderCameraPawn()
@@ -94,10 +95,14 @@ void ACommanderCameraPawn::OnLeftMouseRelesed()
 				// 4. 레이저가 뭔가에 맞았고, 그 맞은 물체( Actor )가 실제로 존재한다면?
 				if (bHit && HitResult.GetActor())
 				{
-					ACharacter* ClickedUnit = Cast<ACharacter>(HitResult.GetActor());
+					AMyRTSCharacter* ClickedUnit = Cast<AMyRTSCharacter>(HitResult.GetActor());
 
 					if (ClickedUnit)
 					{
+						TArray<AMyRTSCharacter*> SingleUnitArr;
+						SingleUnitArr.Add(ClickedUnit);
+
+						UpdateSelectedUnits(SingleUnitArr);
 						// 5. 맞은 액터의 이름을 문자열로 가져온다.
 						FString HitActorName = HitResult.GetActor()->GetName();
 
@@ -112,17 +117,18 @@ void ACommanderCameraPawn::OnLeftMouseRelesed()
 							);
 						}
 					}
+					else
+					{
+						TArray<AMyRTSCharacter*> NoUnitArr;
+						UpdateSelectedUnits(NoUnitArr);
+						CurrentlySelectedUnit.Empty();
+					}
 				}
 			}
 			else
 			{
 				MyHUD->bIsDrawing = false;
-
-				GEngine->AddOnScreenDebugMessage(
-					-1,
-					3.0f, // 3초 동안 표시
-					FColor::Red,
-					TEXT("다중 선택 (드래그)"));
+				MyHUD->bShouldSelect = true;
 			}
 		}
 	}
@@ -320,15 +326,53 @@ void ACommanderCameraPawn::Tick(float DeltaTime)
 				FHitResult HitResult;
 				if (PC->GetHitResultUnderCursor(ECC_Visibility, false, HitResult))
 				{
-					AActor* DummyUnit = UGameplayStatics::GetActorOfClass(GetWorld(), ACharacter::StaticClass());
+					//AActor* DummyUnit = UGameplayStatics::GetActorOfClass(GetWorld(), ACharacter::StaticClass());
+					//
+					//ACharacter* DummyCharacter = Cast<ACharacter>(DummyUnit);
+					//
+					//if (DummyCharacter && DummyCharacter->GetController())
+					//{
+					//	UAIBlueprintHelperLibrary::SimpleMoveToLocation(DummyCharacter->GetController(), HitResult.Location);
+					//	DrawDebugSphere(GetWorld(), HitResult.Location, 50.0f, 16, FColor::Green, false, 3.0f);
+					//}
 
-					ACharacter* DummyCharacter = Cast<ACharacter>(DummyUnit);
+					int32 Columns = 3; // 한 줄에 3명씩 세운다고 가정
+					float Spacing = 150.0f; // 유닛 간의 간격 ( 150 픽셀 )
 
-					if (DummyCharacter && DummyCharacter->GetController())
+					for (int32 i = 0; i < CurrentlySelectedUnit.Num(); i++)
 					{
-						UAIBlueprintHelperLibrary::SimpleMoveToLocation(DummyCharacter->GetController(), HitResult.Location);
-						DrawDebugSphere(GetWorld(), HitResult.Location, 50.0f, 16, FColor::Green, false, 3.0f);
+						// 1. 몫과 나머지로 2D 바둑판 인덱스 구하기
+						int32 Row = i / Columns; // 0, 0, 0, 1, 1, 1, 2, 2, 2...
+						int32 Col = i % Columns; // 0, 1, 2, 0, 1, 2, 0, 1, 2...
+
+						// 2. Row와 Col을 바탕으로 각 유닛의 전용 오프셋( Offset ) 계산
+						FVector Offset(Row* Spacing, Col* Spacing, 0.0f);
+
+						// 4. 최종 목적지 계산 ( 기본 좌표 + 오프셋 )
+						FVector FinalLocation = HitResult.Location + Offset;
+
+						UAIBlueprintHelperLibrary::SimpleMoveToLocation(
+							CurrentlySelectedUnit[i]->GetController(),
+							FinalLocation
+						);
+
+						// 5. 이동 상태로 변경
+						CurrentlySelectedUnit[i]->SetUnitState(ERTSUnitState::Move);
 					}
+
+					DrawDebugCircle(
+						GetWorld(),
+						HitResult.Location, 
+						50.0f, 
+						32, 
+						FColor::Green, 
+						false, 
+						0.5f,
+						0,
+						6.0f,
+						FVector(0, 1, 0),
+						FVector(1, 0, 0)
+					);
 				}
 			}
 		}
@@ -367,5 +411,23 @@ void ACommanderCameraPawn::SetupPlayerInputComponent(UInputComponent* PlayerInpu
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
+}
+
+void ACommanderCameraPawn::UpdateSelectedUnits(const TArray<AMyRTSCharacter*>& NewUnits)
+{
+	// 1. 기존 애들 불 끄기
+	for (AMyRTSCharacter* OldUnit : CurrentlySelectedUnit)
+	{
+		if (OldUnit) OldUnit->SetSelected(false);
+	}
+
+	// 2. 명단 교체
+	CurrentlySelectedUnit = NewUnits;
+
+	// 3. 새 애들 불 켜기
+	for (AMyRTSCharacter* NewUnit : CurrentlySelectedUnit)
+	{
+		if (NewUnit) NewUnit->SetSelected(true);
+	}
 }
 
