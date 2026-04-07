@@ -27,6 +27,17 @@ void AMyRTSCharacter::UpdateIdle()
 void AMyRTSCharacter::UpdateMove()
 {
 	// 이동 상태일 때 할 일 ( 예 : 목적지에 도착했는지 거리 체크해서, 도착했으면 Idle로 상태 변경 )
+	
+	// 1. 현재 위치와 목표 위치( 우클릭으로 찍었던 그 바둑판 오프셋 좌표 ) 사이의 거리를 잰다.
+	// ( TargetLocation 변수는 우클릭 명령 시 해당 유닛 안에 저장해 두었다고 가정 )
+	float DistanceToTarget = FVector::Dist2D(GetActorLocation(), TargetLocation);
+
+	// 2. 거리가 허용 오차( 예 : 50.0f ) 안으로 들어왔다면 완벽히 도착한 것으로 간주
+	if (DistanceToTarget <= 50.0f)
+	{
+		// 3. 지휘 통제실( SetUnitState )에 보고하여 상태를 대기( Idle )로 전환
+		SetUnitState(ERTSUnitState::Idle);
+	}
 }
 
 // Called every frame

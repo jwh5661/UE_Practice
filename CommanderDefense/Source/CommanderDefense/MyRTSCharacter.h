@@ -38,6 +38,9 @@ public:
 	// 외부에서 상태를 변경할 때 부르는 함수
 	void SetUnitState(ERTSUnitState NewState);
 
+	// 이동 시 도착 위치 오프셋 좌표 설정하는 함수
+	void SetLocation(FVector NewLocation) { TargetLocation = NewLocation; }
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -50,4 +53,7 @@ protected:
 protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "RTS|State")
 	ERTSUnitState CurrentState = ERTSUnitState::Idle;
+
+	// 이동 시 도착 위치 오프셋 좌표
+	FVector TargetLocation;
 };

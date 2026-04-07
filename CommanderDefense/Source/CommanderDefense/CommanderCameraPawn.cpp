@@ -358,6 +358,9 @@ void ACommanderCameraPawn::Tick(float DeltaTime)
 
 						// 5. 이동 상태로 변경
 						CurrentlySelectedUnit[i]->SetUnitState(ERTSUnitState::Move);
+
+						// 6. 이동 위치를 캐릭터에 저장
+						CurrentlySelectedUnit[i]->SetLocation(FinalLocation);
 					}
 
 					DrawDebugCircle(
