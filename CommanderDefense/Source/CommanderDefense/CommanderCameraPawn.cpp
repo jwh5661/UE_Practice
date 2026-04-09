@@ -11,6 +11,10 @@
 #include "MyRTSHUD.h"
 #include "MyRTSPlayerController.h"
 #include "MyRTSCharacter.h"
+#include "EnhancedInputComponent.h"
+#include "EnhancedInputSubsystems.h"
+#include "InputActionValue.h"
+#include "GameFramework/FloatingPawnMovement.h"
 
 // Sets default values
 ACommanderCameraPawn::ACommanderCameraPawn()
@@ -35,6 +39,14 @@ ACommanderCameraPawn::ACommanderCameraPawn()
 	// 여기서 두 번째 인자 안쓰면 셀카봉을 쥐고 있는 손잡이에 카메라를 달게 됨
 	// 두 번째 인자가 있어야 셀카봉의 끄트머리에 달 수 있음
 	CameraComp->SetupAttachment(SpringArm, USpringArmComponent::SocketName);
+
+	// 지휘관 이동을 처리할 비행 무브먼트 컴포넌트 생성
+	MovementComponent = CreateDefaultSubobject<UFloatingPawnMovement>(TEXT("MovementComponent"));
+
+	// 이동 속도 설정
+	MovementComponent->MaxSpeed = 2000.0f; // 최고 속도
+	MovementComponent->Acceleration = 4000.0f; // 가속도
+	MovementComponent->Deceleration = 4000.0f; // 감속도 ( 마우스 놓았을 때 미끄러지는 정도 )
 }
 
 // Called when the game starts or when spawned
@@ -147,24 +159,24 @@ void ACommanderCameraPawn::Tick(float DeltaTime)
 	// 내 카메라에 빙의한 플레이어 컨트롤러( 뇌 )를 가져온다
 	APlayerController* PC = Cast<APlayerController>(GetController());
 
-	if (PC)
-	{
-		// 언리얼 기본 키 검사 ( 직관적으로 할 때 )
-		if (PC->IsInputKeyDown(EKeys::W)) MoveInput.X += 1.0f; // 앞으로 ( X축 )
-		if (PC->IsInputKeyDown(EKeys::S)) MoveInput.X -= 1.0f; // 뒤로 ( X축 )
-		if (PC->IsInputKeyDown(EKeys::A)) MoveInput.Y -= 1.0f; // 왼쪽으로 ( Y축 )
-		if (PC->IsInputKeyDown(EKeys::D)) MoveInput.Y += 1.0f; // 오른쪽으로 ( Y축 )
-	}
-
-	if (!MoveInput.IsNearlyZero())
-	{
-		MoveInput.Normalize(); // 대각선으로 갈 때 더 빨라지는 걸 막아주는 코드
-
-		float MoveSpeed = 2000.0f; // 카메라 이동 속도
-
-		// 현재 위치에서 방향 * 속도 * 시간만큼 더해서 이동시킨다
-		AddActorWorldOffset(MoveInput * MoveSpeed * DeltaTime);
-	}
+	//if (PC)
+	//{
+	//	// 언리얼 기본 키 검사 ( 직관적으로 할 때 )
+	//	if (PC->IsInputKeyDown(EKeys::W)) MoveInput.X += 1.0f; // 앞으로 ( X축 )
+	//	if (PC->IsInputKeyDown(EKeys::S)) MoveInput.X -= 1.0f; // 뒤로 ( X축 )
+	//	if (PC->IsInputKeyDown(EKeys::A)) MoveInput.Y -= 1.0f; // 왼쪽으로 ( Y축 )
+	//	if (PC->IsInputKeyDown(EKeys::D)) MoveInput.Y += 1.0f; // 오른쪽으로 ( Y축 )
+	//}
+	//
+	//if (!MoveInput.IsNearlyZero())
+	//{
+	//	MoveInput.Normalize(); // 대각선으로 갈 때 더 빨라지는 걸 막아주는 코드
+	//
+	//	float MoveSpeed = 2000.0f; // 카메라 이동 속도
+	//
+	//	// 현재 위치에서 방향 * 속도 * 시간만큼 더해서 이동시킨다
+	//	AddActorWorldOffset(MoveInput * MoveSpeed * DeltaTime);
+	//}
 
 	// 엣지 스크롤링 로직
 
@@ -414,6 +426,13 @@ void ACommanderCameraPawn::SetupPlayerInputComponent(UInputComponent* PlayerInpu
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
+	// 구형 인풋 컴포넌트를 Enhanced Input 컴포넌트로 형변환
+	if (UEnhancedInputComponent* EnhancedInputComponent = Cast<UEnhancedInputComponent>(PlayerInputComponent))
+	{
+		// 에디터에서 할당한 IA_Move 액션이 'Triggerd( 눌리는 중 )'일 때, Move 함수를 실행하라
+		EnhancedInputComponent->BindAction(IA_Move, ETriggerEvent::Triggered, this, &ACommanderCameraPawn::Move);
+	}
+
 }
 
 void ACommanderCameraPawn::UpdateSelectedUnits(const TArray<AMyRTSCharacter*>& NewUnits)
@@ -432,5 +451,15 @@ void ACommanderCameraPawn::UpdateSelectedUnits(const TArray<AMyRTSCharacter*>& N
 	{
 		if (NewUnit) NewUnit->SetSelected(true);
 	}
+}
+
+void ACommanderCameraPawn::Move(const FInputActionValue& Value)
+{
+	// Axis2D로 설정했으므로 Vector2D로 값을 가져옵니다.
+	FVector2D MovementVector = Value.Get<FVector2D>();
+
+	// X값( 좌우 )과 Y값( 전후 )을 바탕으로 이동 로직 구현
+	AddMovementInput(FVector::ForwardVector, MovementVector.Y);
+	AddMovementInput(FVector::RightVector, MovementVector.X);
 }
 

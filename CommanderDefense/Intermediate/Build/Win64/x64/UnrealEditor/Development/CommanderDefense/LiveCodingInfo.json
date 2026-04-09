@@ -2,6 +2,7 @@
 	"RemapUnityFiles": 
 	{
 		"Module.CommanderDefense.gen.cpp.obj": [
+			"CDGameMode.gen.cpp.obj",
 			"CommanderCameraPawn.gen.cpp.obj",
 			"CommanderDefense.init.gen.cpp.obj",
 			"MyRTSCharacter.gen.cpp.obj",

@@ -13,5 +13,12 @@ UCLASS()
 class COMMANDERDEFENSE_API AMyRTSPlayerController : public APlayerController
 {
 	GENERATED_BODY()
+
+protected:
+	virtual void BeginPlay() override;
+
+public:
+	UPROPERTY(EditAnywhere, Category = "Commander Setting")
+	class UInputMappingContext* IMC_Commander;
 	
 };

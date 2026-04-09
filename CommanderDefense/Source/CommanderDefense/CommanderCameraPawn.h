@@ -55,6 +55,12 @@ protected:
 	UPROPERTY(EditAnywhere, Category = "Camera Settings")
 	float PanSpeed = 100.0f;
 
+	UPROPERTY(EditAnywhere, Category = "Camera Settings")
+	class UInputAction* IA_Move;
+
+	UPROPERTY(EditAnywhere, Category = "Camera Settings")
+	class UFloatingPawnMovement* MovementComponent;
+
 	UPROPERTY()
 	TArray<class AMyRTSCharacter*> CurrentlySelectedUnit;
 
@@ -74,4 +80,6 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	void UpdateSelectedUnits(const TArray<AMyRTSCharacter*>& NewUnits);
+
+	void Move(const struct FInputActionValue& Value);
 };

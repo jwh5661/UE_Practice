@@ -17,7 +17,9 @@ COMMANDERDEFENSE_API UClass* Z_Construct_UClass_ACommanderCameraPawn_NoRegister(
 COMMANDERDEFENSE_API UClass* Z_Construct_UClass_AMyRTSCharacter_NoRegister();
 ENGINE_API UClass* Z_Construct_UClass_APawn();
 ENGINE_API UClass* Z_Construct_UClass_UCameraComponent_NoRegister();
+ENGINE_API UClass* Z_Construct_UClass_UFloatingPawnMovement_NoRegister();
 ENGINE_API UClass* Z_Construct_UClass_USpringArmComponent_NoRegister();
+ENHANCEDINPUT_API UClass* Z_Construct_UClass_UInputAction_NoRegister();
 UPackage* Z_Construct_UPackage__Script_CommanderDefense();
 // ********** End Cross Module References **********************************************************
 
@@ -135,6 +137,15 @@ struct Z_Construct_UClass_ACommanderCameraPawn_Statics
 		{ "ToolTip", "\xef\xbf\xbd\xe5\xb7\xa1\xef\xbf\xbd\xef\xbf\xbd \xef\xbf\xbd\xd3\xb5\xef\xbf\xbd" },
 #endif
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_IA_Move_MetaData[] = {
+		{ "Category", "Camera Settings" },
+		{ "ModuleRelativePath", "CommanderCameraPawn.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_MovementComponent_MetaData[] = {
+		{ "Category", "Camera Settings" },
+		{ "EditInline", "true" },
+		{ "ModuleRelativePath", "CommanderCameraPawn.h" },
+	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_CurrentlySelectedUnit_MetaData[] = {
 		{ "ModuleRelativePath", "CommanderCameraPawn.h" },
 	};
@@ -149,6 +160,8 @@ struct Z_Construct_UClass_ACommanderCameraPawn_Statics
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_EdgeScrollZone;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_EdgeScrollSpeed;
 	static const UECodeGen_Private::FFloatPropertyParams NewProp_PanSpeed;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_IA_Move;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_MovementComponent;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_CurrentlySelectedUnit_Inner;
 	static const UECodeGen_Private::FArrayPropertyParams NewProp_CurrentlySelectedUnit;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
@@ -169,6 +182,8 @@ const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_ACommanderCamer
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_ACommanderCameraPawn_Statics::NewProp_EdgeScrollZone = { "EdgeScrollZone", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ACommanderCameraPawn, EdgeScrollZone), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_EdgeScrollZone_MetaData), NewProp_EdgeScrollZone_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_ACommanderCameraPawn_Statics::NewProp_EdgeScrollSpeed = { "EdgeScrollSpeed", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ACommanderCameraPawn, EdgeScrollSpeed), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_EdgeScrollSpeed_MetaData), NewProp_EdgeScrollSpeed_MetaData) };
 const UECodeGen_Private::FFloatPropertyParams Z_Construct_UClass_ACommanderCameraPawn_Statics::NewProp_PanSpeed = { "PanSpeed", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Float, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ACommanderCameraPawn, PanSpeed), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_PanSpeed_MetaData), NewProp_PanSpeed_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ACommanderCameraPawn_Statics::NewProp_IA_Move = { "IA_Move", nullptr, (EPropertyFlags)0x0020080000000001, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ACommanderCameraPawn, IA_Move), Z_Construct_UClass_UInputAction_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_IA_Move_MetaData), NewProp_IA_Move_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ACommanderCameraPawn_Statics::NewProp_MovementComponent = { "MovementComponent", nullptr, (EPropertyFlags)0x0020080000080009, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ACommanderCameraPawn, MovementComponent), Z_Construct_UClass_UFloatingPawnMovement_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MovementComponent_MetaData), NewProp_MovementComponent_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ACommanderCameraPawn_Statics::NewProp_CurrentlySelectedUnit_Inner = { "CurrentlySelectedUnit", nullptr, (EPropertyFlags)0x0000000000000000, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UClass_AMyRTSCharacter_NoRegister, METADATA_PARAMS(0, nullptr) };
 const UECodeGen_Private::FArrayPropertyParams Z_Construct_UClass_ACommanderCameraPawn_Statics::NewProp_CurrentlySelectedUnit = { "CurrentlySelectedUnit", nullptr, (EPropertyFlags)0x0020080000000000, UECodeGen_Private::EPropertyGenFlags::Array, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ACommanderCameraPawn, CurrentlySelectedUnit), EArrayPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CurrentlySelectedUnit_MetaData), NewProp_CurrentlySelectedUnit_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_ACommanderCameraPawn_Statics::PropPointers[] = {
@@ -180,6 +195,8 @@ const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_ACommande
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACommanderCameraPawn_Statics::NewProp_EdgeScrollZone,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACommanderCameraPawn_Statics::NewProp_EdgeScrollSpeed,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACommanderCameraPawn_Statics::NewProp_PanSpeed,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACommanderCameraPawn_Statics::NewProp_IA_Move,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACommanderCameraPawn_Statics::NewProp_MovementComponent,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACommanderCameraPawn_Statics::NewProp_CurrentlySelectedUnit_Inner,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ACommanderCameraPawn_Statics::NewProp_CurrentlySelectedUnit,
 };
@@ -224,10 +241,10 @@ ACommanderCameraPawn::~ACommanderCameraPawn() {}
 struct Z_CompiledInDeferFile_FID_UnrealProjects_UE_Practice_CommanderDefense_Source_CommanderDefense_CommanderCameraPawn_h__Script_CommanderDefense_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_ACommanderCameraPawn, ACommanderCameraPawn::StaticClass, TEXT("ACommanderCameraPawn"), &Z_Registration_Info_UClass_ACommanderCameraPawn, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ACommanderCameraPawn), 3709572023U) },
+		{ Z_Construct_UClass_ACommanderCameraPawn, ACommanderCameraPawn::StaticClass, TEXT("ACommanderCameraPawn"), &Z_Registration_Info_UClass_ACommanderCameraPawn, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ACommanderCameraPawn), 4275979442U) },
 	};
 }; // Z_CompiledInDeferFile_FID_UnrealProjects_UE_Practice_CommanderDefense_Source_CommanderDefense_CommanderCameraPawn_h__Script_CommanderDefense_Statics 
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_UnrealProjects_UE_Practice_CommanderDefense_Source_CommanderDefense_CommanderCameraPawn_h__Script_CommanderDefense_3362425729{
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_UnrealProjects_UE_Practice_CommanderDefense_Source_CommanderDefense_CommanderCameraPawn_h__Script_CommanderDefense_1048587255{
 	TEXT("/Script/CommanderDefense"),
 	Z_CompiledInDeferFile_FID_UnrealProjects_UE_Practice_CommanderDefense_Source_CommanderDefense_CommanderCameraPawn_h__Script_CommanderDefense_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_UnrealProjects_UE_Practice_CommanderDefense_Source_CommanderDefense_CommanderCameraPawn_h__Script_CommanderDefense_Statics::ClassInfo),
 	nullptr, 0,

@@ -6,6 +6,13 @@
         "PCH": "c:\\unrealprojects\\ue_practice\\commanderdefense\\intermediate\\build\\win64\\x64\\commanderdefenseeditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.valexpapi.cpp20.h.pch",
         "Includes": [
             "c:\\unrealprojects\\ue_practice\\commanderdefense\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\commanderdefense\\definitions.commanderdefense.h",
+            "c:\\unrealprojects\\ue_practice\\commanderdefense\\intermediate\\build\\win64\\unrealeditor\\inc\\commanderdefense\\uht\\cdgamemode.gen.cpp",
+            "c:\\unrealprojects\\ue_practice\\commanderdefense\\source\\commanderdefense\\cdgamemode.h",
+            "c:\\program files\\epic games\\ue_5.7\\engine\\source\\runtime\\engine\\classes\\gameframework\\gamemodebase.h",
+            "c:\\program files\\epic games\\ue_5.7\\engine\\source\\runtime\\engine\\classes\\engine\\serverstatreplicator.h",
+            "c:\\program files\\epic games\\ue_5.7\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\serverstatreplicator.generated.h",
+            "c:\\program files\\epic games\\ue_5.7\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\gamemodebase.generated.h",
+            "c:\\unrealprojects\\ue_practice\\commanderdefense\\intermediate\\build\\win64\\unrealeditor\\inc\\commanderdefense\\uht\\cdgamemode.generated.h",
             "c:\\unrealprojects\\ue_practice\\commanderdefense\\intermediate\\build\\win64\\unrealeditor\\inc\\commanderdefense\\uht\\commandercamerapawn.gen.cpp",
             "c:\\unrealprojects\\ue_practice\\commanderdefense\\source\\commanderdefense\\commandercamerapawn.h",
             "c:\\unrealprojects\\ue_practice\\commanderdefense\\intermediate\\build\\win64\\unrealeditor\\inc\\commanderdefense\\uht\\commandercamerapawn.generated.h",
