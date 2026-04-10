@@ -17,8 +17,21 @@ class COMMANDERDEFENSE_API AMyRTSPlayerController : public APlayerController
 protected:
 	virtual void BeginPlay() override;
 
+	virtual void SetupInputComponent() override;
+
+protected:
+
+public:
+	void OnLeftClick();
+
 public:
 	UPROPERTY(EditAnywhere, Category = "Commander Setting")
 	class UInputMappingContext* IMC_Commander;
+
+	UPROPERTY(EditAnywhere, Category = "Commander Setting")
+	class UInputAction* IA_LeftClick;
+
+	UPROPERTY(EditAnywhere, Category = "Building")
+	class UDataTable* BuildingDataTable;
 	
 };

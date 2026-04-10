@@ -15,6 +15,8 @@ void EmptyLinkFunctionForGeneratedCodeMyRTSPlayerController() {}
 COMMANDERDEFENSE_API UClass* Z_Construct_UClass_AMyRTSPlayerController();
 COMMANDERDEFENSE_API UClass* Z_Construct_UClass_AMyRTSPlayerController_NoRegister();
 ENGINE_API UClass* Z_Construct_UClass_APlayerController();
+ENGINE_API UClass* Z_Construct_UClass_UDataTable_NoRegister();
+ENHANCEDINPUT_API UClass* Z_Construct_UClass_UInputAction_NoRegister();
 ENHANCEDINPUT_API UClass* Z_Construct_UClass_UInputMappingContext_NoRegister();
 UPackage* Z_Construct_UPackage__Script_CommanderDefense();
 // ********** End Cross Module References **********************************************************
@@ -64,10 +66,20 @@ struct Z_Construct_UClass_AMyRTSPlayerController_Statics
 		{ "Category", "Commander Setting" },
 		{ "ModuleRelativePath", "MyRTSPlayerController.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_IA_LeftClick_MetaData[] = {
+		{ "Category", "Commander Setting" },
+		{ "ModuleRelativePath", "MyRTSPlayerController.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_BuildingDataTable_MetaData[] = {
+		{ "Category", "Building" },
+		{ "ModuleRelativePath", "MyRTSPlayerController.h" },
+	};
 #endif // WITH_METADATA
 
 // ********** Begin Class AMyRTSPlayerController constinit property declarations *******************
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_IMC_Commander;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_IA_LeftClick;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_BuildingDataTable;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 // ********** End Class AMyRTSPlayerController constinit property declarations *********************
 	static UObject* (*const DependentSingletons[])();
@@ -79,8 +91,12 @@ struct Z_Construct_UClass_AMyRTSPlayerController_Statics
 
 // ********** Begin Class AMyRTSPlayerController Property Definitions ******************************
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMyRTSPlayerController_Statics::NewProp_IMC_Commander = { "IMC_Commander", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMyRTSPlayerController, IMC_Commander), Z_Construct_UClass_UInputMappingContext_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_IMC_Commander_MetaData), NewProp_IMC_Commander_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMyRTSPlayerController_Statics::NewProp_IA_LeftClick = { "IA_LeftClick", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMyRTSPlayerController, IA_LeftClick), Z_Construct_UClass_UInputAction_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_IA_LeftClick_MetaData), NewProp_IA_LeftClick_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_AMyRTSPlayerController_Statics::NewProp_BuildingDataTable = { "BuildingDataTable", nullptr, (EPropertyFlags)0x0010000000000001, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(AMyRTSPlayerController, BuildingDataTable), Z_Construct_UClass_UDataTable_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_BuildingDataTable_MetaData), NewProp_BuildingDataTable_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_AMyRTSPlayerController_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyRTSPlayerController_Statics::NewProp_IMC_Commander,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyRTSPlayerController_Statics::NewProp_IA_LeftClick,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_AMyRTSPlayerController_Statics::NewProp_BuildingDataTable,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_AMyRTSPlayerController_Statics::PropPointers) < 2048);
 // ********** End Class AMyRTSPlayerController Property Definitions ********************************
@@ -124,10 +140,10 @@ AMyRTSPlayerController::~AMyRTSPlayerController() {}
 struct Z_CompiledInDeferFile_FID_UnrealProjects_UE_Practice_CommanderDefense_Source_CommanderDefense_MyRTSPlayerController_h__Script_CommanderDefense_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_AMyRTSPlayerController, AMyRTSPlayerController::StaticClass, TEXT("AMyRTSPlayerController"), &Z_Registration_Info_UClass_AMyRTSPlayerController, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AMyRTSPlayerController), 3906021452U) },
+		{ Z_Construct_UClass_AMyRTSPlayerController, AMyRTSPlayerController::StaticClass, TEXT("AMyRTSPlayerController"), &Z_Registration_Info_UClass_AMyRTSPlayerController, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(AMyRTSPlayerController), 1134823425U) },
 	};
 }; // Z_CompiledInDeferFile_FID_UnrealProjects_UE_Practice_CommanderDefense_Source_CommanderDefense_MyRTSPlayerController_h__Script_CommanderDefense_Statics 
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_UnrealProjects_UE_Practice_CommanderDefense_Source_CommanderDefense_MyRTSPlayerController_h__Script_CommanderDefense_1538731586{
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_UnrealProjects_UE_Practice_CommanderDefense_Source_CommanderDefense_MyRTSPlayerController_h__Script_CommanderDefense_1327793049{
 	TEXT("/Script/CommanderDefense"),
 	Z_CompiledInDeferFile_FID_UnrealProjects_UE_Practice_CommanderDefense_Source_CommanderDefense_MyRTSPlayerController_h__Script_CommanderDefense_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_UnrealProjects_UE_Practice_CommanderDefense_Source_CommanderDefense_MyRTSPlayerController_h__Script_CommanderDefense_Statics::ClassInfo),
 	nullptr, 0,

@@ -30,6 +30,12 @@
     <Filter Include="Source\CommanderDefense">
       <UniqueIdentifier>{21074E76-BD49-3FC4-9B68-1667C7B30E48}</UniqueIdentifier>
     </Filter>
+    <ClCompile Include="..\..\Source\CommanderDefense\BuildingData.cpp">
+      <Filter>Source\CommanderDefense</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Source\CommanderDefense\BuildingData.h">
+      <Filter>Source\CommanderDefense</Filter>
+    </ClInclude>
     <ClCompile Include="..\..\Source\CommanderDefense\CDGameMode.cpp">
       <Filter>Source\CommanderDefense</Filter>
     </ClCompile>

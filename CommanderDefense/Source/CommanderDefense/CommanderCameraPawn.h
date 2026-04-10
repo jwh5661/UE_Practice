@@ -19,9 +19,9 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-	void OnLeftMousePressed();
+	// void OnLeftMousePressed();
 
-	void OnLeftMouseRelesed();
+	// void OnLeftMouseRelesed();
 
 protected:
 	// 지휘관의 눈을 지탱할 셀카봉
@@ -72,6 +72,9 @@ protected:
 
 	FVector2D RightClickDownPosition;
 
+	// 카메라가 최종적으로 도달해야 할 목표 길이
+	float TargetZoomLength;
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
@@ -79,7 +82,7 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
-	void UpdateSelectedUnits(const TArray<AMyRTSCharacter*>& NewUnits);
+	// void UpdateSelectedUnits(const TArray<AMyRTSCharacter*>& NewUnits);
 
 	void Move(const struct FInputActionValue& Value);
 };
