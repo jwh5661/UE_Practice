@@ -1,8 +1,0 @@
-{
-	"SourceFiles": [
-		"C:\\UnrealProjects\\UE_Practice\\CommanderDefense\\Source\\CommanderDefense\\CommanderDefense.Build.cs",
-		"C:\\UnrealProjects\\UE_Practice\\CommanderDefense\\Source\\CommanderDefense.Target.cs",
-		"C:\\UnrealProjects\\UE_Practice\\CommanderDefense\\Source\\CommanderDefenseEditor.Target.cs"
-	],
-	"EngineVersion": "5.7.4"
-}
